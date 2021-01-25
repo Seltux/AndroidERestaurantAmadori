@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".HomeActivity">
 
     <TextView
         android:id="@+id/idNomApplication"
@@ -12,6 +12,7 @@
         android:layout_height="52dp"
         android:gravity="center"
         android:text="@string/kebab_grill"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -19,11 +20,24 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.023" />
 
+    <TextView
+        android:id="@+id/idPhraseIntroduction"
+        android:layout_width="367dp"
+        android:layout_height="55dp"
+        android:gravity="center"
+        android:text="@string/bienvenue_dans_le_meilleur_kebab_de_france"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/idLogo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idNomApplication" />
+
     <Button
-        android:id="@+id/button"
+        android:id="@+id/idButtonEntree"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/entrees"
+        android:background="@android:color/holo_green_dark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
@@ -31,39 +45,54 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/idButtonPlats"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/plats"
+        android:background="@android:color/holo_green_dark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintTop_toBottomOf="@+id/idButtonEntree"
         app:layout_constraintVertical_bias="0.109" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/idButtonDesserts"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="160dp"
         android:text="@string/desserts"
+        android:background="@android:color/holo_green_dark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2"
+        app:layout_constraintTop_toBottomOf="@+id/idButtonPlats"
         app:layout_constraintVertical_bias="0.511" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/idLogo"
         android:layout_width="212dp"
         android:layout_height="206dp"
         android:contentDescription="@string/logo_du_restaurant_kebab_grill"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/idButtonEntree"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/idNomApplication"
+        app:layout_constraintVertical_bias="0.867"
         app:srcCompat="@drawable/istockphoto_954909832_170667a" />
+
+    <TextView
+        android:id="@+id/idCredits"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Creatred by Professionnels"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.977" />
 </android.support.constraint.ConstraintLayout>
