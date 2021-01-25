@@ -8,4 +8,10 @@
     <string name="créé_par_des_professionnels">créé par des professionnels</string>
     <string name="nos_plats">Nos Plats</string>
     <string name="i_nostri_piatti">I nostri piatti</string>
+
+    <string-array name="menu_array">
+        <item>Entrée</item>
+        <item>Plats</item>
+        <item>Desserts</item>
+    </string-array>
 </resources>
