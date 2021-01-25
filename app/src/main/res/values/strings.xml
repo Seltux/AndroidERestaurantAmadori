@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">AndroidERestaurant</string>
+    <string name="entrees">Entrées</string>
+    <string name="desserts">Desserts</string>
+    <string name="plats">Plats</string>
+    <string name="kebab_grill">Kebab Grill</string>
+    <string name="logo_du_restaurant_kebab_grill">Logo du restaurant Kebab Grill</string>
+</resources>
