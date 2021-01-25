@@ -4,95 +4,87 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".HomeActivity">
-
-    <TextView
-        android:id="@+id/idNomApplication"
-        android:layout_width="188dp"
-        android:layout_height="52dp"
-        android:gravity="center"
-        android:text="@string/kebab_grill"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023" />
-
-    <TextView
-        android:id="@+id/idPhraseIntroduction"
-        android:layout_width="367dp"
-        android:layout_height="55dp"
-        android:gravity="center"
-        android:text="@string/bienvenue_dans_le_meilleur_kebab_de_france"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@+id/idLogo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idNomApplication" />
 
     <Button
         android:id="@+id/idButtonEntree"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+        android:background="@color/green_italie"
         android:text="@string/entrees"
-        android:background="@android:color/holo_green_dark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.582" />
 
     <Button
         android:id="@+id/idButtonPlats"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+        android:background="@color/white_italie"
         android:text="@string/plats"
-        android:background="@android:color/holo_green_dark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/idButtonEntree"
-        app:layout_constraintVertical_bias="0.109" />
+        app:layout_constraintVertical_bias="0.106" />
 
     <Button
         android:id="@+id/idButtonDesserts"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="30dp"
         android:layout_marginBottom="160dp"
-        android:text="@string/desserts"
         android:background="@android:color/holo_green_dark"
+        android:text="@string/desserts"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/idButtonPlats"
-        app:layout_constraintVertical_bias="0.511" />
-
-    <ImageView
-        android:id="@+id/idLogo"
-        android:layout_width="212dp"
-        android:layout_height="206dp"
-        android:contentDescription="@string/logo_du_restaurant_kebab_grill"
-        app:layout_constraintBottom_toTopOf="@+id/idButtonEntree"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idNomApplication"
-        app:layout_constraintVertical_bias="0.867"
-        app:srcCompat="@drawable/istockphoto_954909832_170667a" />
+        app:layout_constraintVertical_bias="0.8" />
 
     <TextView
         android:id="@+id/idCredits"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/creatred_by_professionnels"
+        android:text="@string/créé_par_des_professionnels"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.977" />
+
+    <ImageView
+        android:id="@+id/idLogoRestaurantItalien"
+        android:layout_width="346dp"
+        android:layout_height="355dp"
+        android:contentDescription="@string/logo_page_accueil_application"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.753"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.095"
+        app:srcCompat="@drawable/logo_restaurant" />
+
+    <TextView
+        android:id="@+id/idSloganRestaurant"
+        android:layout_width="307dp"
+        android:layout_height="33dp"
+        android:fontFamily="@font/italiana"
+        android:gravity="center"
+        android:text="@string/qualit_e_know_how_italiano"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="18sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toTopOf="@+id/idButtonEntree"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.832" />
 </android.support.constraint.ConstraintLayout>
