@@ -8,10 +8,15 @@
     <string name="créé_par_des_professionnels">créé par des professionnels</string>
     <string name="nos_plats">Nos Plats</string>
     <string name="i_nostri_piatti">I nostri piatti</string>
+    <string name="textview">TextView</string>
+    <string name="image_du_repas_correspondant_la_description">Image du repas correspondant à la description</string>
+    <string name="nom_repas">Nom Repas</string>
+    <string name="descriptionrepas">DescriptionRepas</string>
+    <string name="prixrepas">PrixRepas</string>
 
     <string-array name="menu_array">
-        <item>Entrée</item>
-        <item>Plats</item>
-        <item>Desserts</item>
+        <item>Repas 1</item>
+        <item>Repas 2</item>
+        <item>Repas 3</item>
     </string-array>
 </resources>

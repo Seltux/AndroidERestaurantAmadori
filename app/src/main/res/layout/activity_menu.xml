@@ -21,11 +21,9 @@
         android:id="@+id/idListMenu"
         android:layout_width="222dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="116dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="92dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idTitreMenu"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/idTitreMenu" />
 </android.support.constraint.ConstraintLayout>
