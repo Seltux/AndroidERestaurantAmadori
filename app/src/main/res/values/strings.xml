@@ -13,6 +13,9 @@
     <string name="descriptionrepas">DescriptionRepas</string>
     <string name="prixrepas">PrixRepas</string>
     <string name="test">test</string>
+    <string name="repasdetails">RepasDetails</string>
+    <string name="ingredients_du_plat">TextView</string>
+    <string name="image_du_repas_choisis">Image du Repas choisis</string>
 
     <string-array name="menu_array">
         <item>Petite Sardines</item>

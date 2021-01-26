@@ -24,6 +24,10 @@ import org.json.JSONObject
 
 private lateinit var binding: ActivityMenuBinding
 class MenuActivity : AppCompatActivity() {
+    companion object{
+        const val NOMREPASDETAILS = "nom_repas_details"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMenuBinding.inflate(layoutInflater)
@@ -68,7 +72,7 @@ class MenuActivity : AppCompatActivity() {
         binding.idListMenu.layoutManager = LinearLayoutManager(this)
         binding.idListMenu.adapter = CategoriesAdapter(menu_name) {
             val intent = Intent(this, DetailsActivity::class.java)
-            intent.putExtra("Category", it)
+            intent.putExtra(NOMREPASDETAILS, it)
             startActivity(intent)
         }
     }

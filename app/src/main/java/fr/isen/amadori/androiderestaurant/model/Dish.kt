@@ -6,8 +6,8 @@ import java.io.Serializable
 data class Dish(
     @SerializedName("name_fr") val title: String,
     @SerializedName("ingredients") val ingredients: List<Ingredient>,
-    @SerializedName("images") private val images: List<String>,
-    @SerializedName("prices") private val prix: List<Price>
+    @SerializedName("images") val images: List<String>,
+    @SerializedName("prices") val prix: List<Price>
 ) : Serializable {
     fun getPrice() = prix[0].price.toDouble()
     fun getFormattedPrice() = prix[0].price + "€"
@@ -21,4 +21,5 @@ data class Dish(
     }else{
         null
     }
+    fun getIngredients() {}
 }
