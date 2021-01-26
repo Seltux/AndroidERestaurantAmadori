@@ -4,16 +4,20 @@ package fr.isen.amadori.androiderestaurant.category
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.volley.Request
 import com.android.volley.VolleyError
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
+import com.google.gson.Gson
 import fr.isen.amadori.androiderestaurant.DetailsActivity
 import fr.isen.amadori.androiderestaurant.HomeActivity
 import fr.isen.amadori.androiderestaurant.R
 import fr.isen.amadori.androiderestaurant.databinding.ActivityMenuBinding
+import fr.isen.amadori.androiderestaurant.model.Dish
+import fr.isen.amadori.androiderestaurant.model.DishesJsonResult
 import org.json.JSONException
 import org.json.JSONObject
 
@@ -26,18 +30,14 @@ class MenuActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.idTitreMenu.text = intent.getStringExtra(HomeActivity.CATEGORY)
-        binding.idListMenu.layoutManager = LinearLayoutManager(this)
-        val menu_name = resources.getStringArray(R.array.menu_array).toList()
-        binding.idListMenu.adapter = CategoriesAdapter(menu_name){
-            val intent = Intent(this, DetailsActivity::class.java)
-            intent.putExtra("Category", it)
-            startActivity(intent)
-        }
+
+        //val menu_name = resources.getStringArray(R.array.menu_array).toList()
         //load data
-        volleyPost()
+        volleyPost(intent.getStringExtra("Category")?: "")
     }
 
-    fun volleyPost() {
+
+    fun volleyPost(category: String) {
         val postUrl = "http://test.api.catering.bluecodegames.com/menu"
         val requestQueue = Volley.newRequestQueue(this)
         val postData = JSONObject()
@@ -47,12 +47,29 @@ class MenuActivity : AppCompatActivity() {
             e.printStackTrace()
         }
         val jsonObjectRequest = JsonObjectRequest(Request.Method.POST, postUrl, postData,
-             {
-                Log.d("HomeActivity", it.toString())
+            {
+                //LA
+                val gson: DishesJsonResult =
+                    Gson().fromJson(it.toString(), DishesJsonResult::class.java)
+                gson.data.firstOrNull { it.name_category == category }?.dishes?.let { dishes ->
+                    displayCategories(dishes)
+                } ?: run {
+                    Log.d("HomeActivity", it.toString())
+                }
             },
-             {
+            {
                 Log.e("HomeActivity", it.toString())
             })
         requestQueue.add(jsonObjectRequest)
+    }
+    private fun displayCategories(menu_name: List<Dish>) {
+        binding.idCategoryLoader.visibility = View.GONE
+        binding.idListMenu.visibility = View.VISIBLE
+        binding.idListMenu.layoutManager = LinearLayoutManager(this)
+        binding.idListMenu.adapter = CategoriesAdapter(menu_name) {
+            val intent = Intent(this, DetailsActivity::class.java)
+            intent.putExtra("Category", it)
+            startActivity(intent)
+        }
     }
 }
