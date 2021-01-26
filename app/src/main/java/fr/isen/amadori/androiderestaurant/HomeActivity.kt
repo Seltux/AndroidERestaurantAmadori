@@ -2,12 +2,13 @@ package fr.isen.amadori.androiderestaurant
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.widget.Toast
-import fr.isen.amadori.androiderestaurant.databinding.ActivityMainBinding
+import androidx.appcompat.app.AppCompatActivity
+import fr.isen.amadori.androiderestaurant.category.MenuActivity
+import fr.isen.amadori.androiderestaurant.databinding.ActivityHomeBinding
 
-private lateinit var binding: ActivityMainBinding
+private lateinit var binding: ActivityHomeBinding
 
 class HomeActivity : AppCompatActivity() {
     companion object{
@@ -19,7 +20,7 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         //Affichage d'un log lors de onCreate()
         Log.i(TAG, "onCreate() Called")
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         //Toast & Redirection
