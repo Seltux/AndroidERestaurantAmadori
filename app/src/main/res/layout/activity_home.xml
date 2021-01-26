@@ -7,6 +7,7 @@
     android:background="#FFFFFF"
     tools:context=".HomeActivity">
 
+
     <Button
         android:id="@+id/idButtonEntree"
         android:layout_width="150dp"
@@ -40,7 +41,7 @@
         android:layout_width="150dp"
         android:layout_height="30dp"
         android:layout_marginBottom="160dp"
-        android:background="@android:color/holo_green_dark"
+        android:background="@color/green_italie_2"
         android:elevation="10dp"
         android:text="@string/desserts"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -90,4 +91,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.832" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,4 +10,6 @@
     <color name="white_italie">#EDEBEB</color>
     <color name="red_italie">#FE0000</color>
     <color name="green_italie">#E81123</color>
+    <color name="green_italie_2">#32A154</color>
+    <color name="green_italie_contrast">#27703E</color>
 </resources>

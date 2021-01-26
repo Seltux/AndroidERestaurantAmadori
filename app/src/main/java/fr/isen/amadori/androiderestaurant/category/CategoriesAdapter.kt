@@ -1,13 +1,17 @@
 package fr.isen.amadori.androiderestaurant.category
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.MemoryPolicy
+import com.squareup.picasso.Callback
 import com.squareup.picasso.NetworkPolicy
 import com.squareup.picasso.Picasso
+import fr.isen.amadori.androiderestaurant.R
 import fr.isen.amadori.androiderestaurant.databinding.RepasMenuBinding
 import fr.isen.amadori.androiderestaurant.model.Dish
+import java.lang.Exception
+
 
 class CategoriesAdapter(
     private val categories: List<Dish>,
@@ -25,13 +29,12 @@ class CategoriesAdapter(
         }
         p0.prix_repas.text = categories[p1].getFormattedPrice()
         if(categories[p1].getFirstImage() != null) {
-            Picasso.get().load(categories[p1].getFirstImage()).networkPolicy(NetworkPolicy.OFFLINE)
+            Picasso.get().load(categories[p1].getFirstImage()).networkPolicy(NetworkPolicy.OFFLINE).placeholder(R.drawable.logo_restaurant).error(
+                R.drawable.jokes_about_italians)
                 .into(p0.image_repas)
         }else{
-            Picasso.get().load("https://static.boredpanda.com/blog/wp-content/uploads/2017/07/jokes-about-italians-1-5976f6b7b5d68__700.jpg").networkPolicy(NetworkPolicy.OFFLINE).into(p0.image_repas)
+            Picasso.get().load(R.drawable.jokes_about_italians).into(p0.image_repas)
         }
-
-
     }
 
     override fun getItemCount(): Int = categories.size

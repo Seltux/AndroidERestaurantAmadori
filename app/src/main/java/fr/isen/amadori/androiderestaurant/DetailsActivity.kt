@@ -1,7 +1,9 @@
 package fr.isen.amadori.androiderestaurant
 
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.NavUtils
 import com.squareup.picasso.Picasso
 import fr.isen.amadori.androiderestaurant.category.CategoriesAdapter
 import fr.isen.amadori.androiderestaurant.category.MenuActivity
@@ -30,7 +32,5 @@ class DetailsActivity : AppCompatActivity() {
         if (dishInfo != null) {
             binding.idPriceRepasDetails.text = dishInfo.getFormattedPrice()
         }
-
-
     }
 }

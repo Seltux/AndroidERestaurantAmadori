@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AndroidERestaurant</string>
+    <string name="app_name">The Italian Restaurant</string>
     <string name="entrees">Entrées</string>
     <string name="desserts">Desserts</string>
     <string name="plats">Plats</string>
@@ -17,6 +17,7 @@
     <string name="ingredients_du_plat">TextView</string>
     <string name="image_du_repas_choisis">Image du Repas choisis</string>
     <string name="prix_details">Prix</string>
+    <string name="test_image_1">test</string>
 
     <string-array name="menu_array">
         <item>Petite Sardines</item>

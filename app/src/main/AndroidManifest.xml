@@ -11,8 +11,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidERestaurant"
         android:usesCleartextTraffic="true">
-        <activity android:name=".DetailsActivity" />
-        <activity android:name=".category.MenuActivity" />
+        <activity android:name=".DetailsActivity"
+            android:parentActivityName=".category.MenuActivity"
+            />
+        <activity android:name=".category.MenuActivity"
+            android:parentActivityName=".HomeActivity"/>
         <activity android:name=".HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

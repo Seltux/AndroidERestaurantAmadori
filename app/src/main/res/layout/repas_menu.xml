@@ -9,7 +9,6 @@
     android:background="@color/white_italie"
     android:elevation="4dp">
 
-
     <ImageView
         android:id="@+id/idImageRepas"
         android:layout_width="125dp"

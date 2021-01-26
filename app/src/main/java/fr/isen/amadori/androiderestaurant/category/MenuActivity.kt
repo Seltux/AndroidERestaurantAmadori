@@ -4,8 +4,10 @@ package fr.isen.amadori.androiderestaurant.category
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.NavUtils
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.volley.Request
 import com.android.volley.VolleyError
@@ -38,8 +40,8 @@ class MenuActivity : AppCompatActivity() {
         //val menu_name = resources.getStringArray(R.array.menu_array).toList()
         //load data
         volleyPost(intent.getStringExtra("Category")?: "")
-    }
 
+    }
 
     fun volleyPost(category: String) {
         val postUrl = "http://test.api.catering.bluecodegames.com/menu"
