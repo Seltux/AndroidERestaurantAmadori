@@ -21,5 +21,5 @@ data class Dish(
     }else{
         null
     }
-    fun getIngredients() {}
+    fun getIngredients() : String = ingredients.map{it.ingredient_name}.joinToString ( "," )
 }

@@ -11,7 +11,7 @@ import fr.isen.amadori.androiderestaurant.model.Dish
 
 class CategoriesAdapter(
     private val categories: List<Dish>,
-    private val categoriesClickListener: (String) -> Unit
+    private val categoriesClickListener: (Dish) -> Unit
 ) : RecyclerView.Adapter<CategoriesAdapter.CategoryHolder>() {
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): CategoryHolder {
         val itemBinding = RepasMenuBinding.inflate(LayoutInflater.from(p0.context), p0, false)
@@ -21,7 +21,7 @@ class CategoriesAdapter(
     override fun onBindViewHolder(p0: CategoryHolder, p1: Int) {
         p0.title.text = categories[p1].title
         p0.layout.setOnClickListener {
-            categoriesClickListener.invoke(categories[p1].title)
+            categoriesClickListener.invoke(categories[p1])
         }
         p0.prix_repas.text = categories[p1].getFormattedPrice()
         if(categories[p1].getFirstImage() != null) {

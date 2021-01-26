@@ -18,13 +18,17 @@ class DetailsActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val dishInfo: Dish? = intent.getSerializableExtra(MenuActivity.NOMREPASDETAILS) as? Dish
-
-        binding.idNomRepasDetails.text = intent.getStringExtra(MenuActivity.NOMREPASDETAILS)
         if (dishInfo != null) {
-            binding.idIngredientsRepasDetails.text = dishInfo.getIngredients().toString()
+            binding.idIngredientsRepasDetails.text = dishInfo.getIngredients()
         }
         if (dishInfo != null) {
             Picasso.get().load(dishInfo.getFirstImage()).into(binding.idImageRepasDetails)
+        }
+        if (dishInfo != null) {
+            binding.idNomRepasDetails.text = dishInfo.title
+        }
+        if (dishInfo != null) {
+            binding.idPriceRepasDetails.text = dishInfo.getFormattedPrice()
         }
 
 
