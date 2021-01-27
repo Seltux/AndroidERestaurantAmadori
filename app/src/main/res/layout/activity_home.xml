@@ -51,30 +51,17 @@
         app:layout_constraintTop_toBottomOf="@+id/idButtonPlats"
         app:layout_constraintVertical_bias="0.8" />
 
-    <TextView
-        android:id="@+id/idCredits"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/créé_par_des_professionnels"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <ImageView
+        android:id="@+id/idLogoRestaurantItalien"
+        android:layout_width="220dp"
+        android:layout_height="188dp"
+        android:layout_marginTop="4dp"
+        android:contentDescription="@string/logo_page_accueil_application"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.977" />
-
-    <ImageView
-        android:id="@+id/idLogoRestaurantItalien"
-        android:layout_width="346dp"
-        android:layout_height="355dp"
-        android:contentDescription="@string/logo_page_accueil_application"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.753"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.095"
-        app:srcCompat="@drawable/logo_restaurant" />
+        app:layout_constraintTop_toBottomOf="@+id/idGuideMichelin"
+        app:srcCompat="@drawable/logo_restaurant2" />
 
     <TextView
         android:id="@+id/idSloganRestaurant"
@@ -86,10 +73,48 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textSize="18sp"
         android:textStyle="bold|italic"
-        app:layout_constraintBottom_toTopOf="@+id/idButtonEntree"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.48"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idLogoRestaurantItalien" />
+
+    <TextView
+        android:id="@+id/idAdresseRestaurantHome"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:elevation="10dp"
+        android:fontFamily="@font/italianno"
+        android:text="@string/via_bonifacio_viii_14_00165_roma_rm_italie"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/idGuideMichelin"
+        android:layout_width="297dp"
+        android:layout_height="97dp"
+        android:layout_marginTop="8dp"
+        android:contentDescription="@string/guide_michelin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.832" />
+        app:srcCompat="@drawable/guide_michelin" />
+
+    <ImageView
+        android:id="@+id/idPizzaImage"
+        android:layout_width="332dp"
+        android:layout_height="334dp"
+        android:contentDescription="@string/image_de_pizza"
+        app:layout_constraintBottom_toTopOf="@+id/idAdresseRestaurantHome"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idSloganRestaurant"
+        app:srcCompat="@drawable/pizza" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

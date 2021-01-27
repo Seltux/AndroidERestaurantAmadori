@@ -18,6 +18,9 @@
     <string name="image_du_repas_choisis">Image du Repas choisis</string>
     <string name="prix_details">Prix</string>
     <string name="test_image_1">test</string>
+    <string name="via_bonifacio_viii_14_00165_roma_rm_italie">Via Bonifacio VIII, 14, 00165 Roma RM, Italie</string>
+    <string name="guide_michelin">Guide Michelin</string>
+    <string name="image_de_pizza">Image de pizza</string>
 
     <string-array name="menu_array">
         <item>Petite Sardines</item>
