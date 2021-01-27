@@ -1,16 +1,13 @@
 package fr.isen.amadori.androiderestaurant.category
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Callback
 import com.squareup.picasso.NetworkPolicy
 import com.squareup.picasso.Picasso
 import fr.isen.amadori.androiderestaurant.R
 import fr.isen.amadori.androiderestaurant.databinding.RepasMenuBinding
 import fr.isen.amadori.androiderestaurant.model.Dish
-import java.lang.Exception
 
 
 class CategoriesAdapter(
@@ -47,4 +44,15 @@ class CategoriesAdapter(
         val image_repas = binding.idImageRepas
 
     }
+
+   /* // Clean all elements of the recycler
+    fun clear() {
+        notifyDataSetChanged()
+    }
+
+    // Add a list of items -- change to type used
+    fun addAll(list: List<Dish?>?) {
+        items.addAll(list)
+        notifyDataSetChanged()
+    }*/
 }
