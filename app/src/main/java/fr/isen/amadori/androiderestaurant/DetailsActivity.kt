@@ -3,13 +3,17 @@ package fr.isen.amadori.androiderestaurant
 import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.squareup.picasso.Picasso
-import com.synnapps.carouselview.ImageListener
+import com.google.android.material.snackbar.Snackbar
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import fr.isen.amadori.androiderestaurant.category.MenuActivity
 import fr.isen.amadori.androiderestaurant.databinding.ActivityDetailsBinding
 import fr.isen.amadori.androiderestaurant.fragments.DetailsCarouselAdapter
-import fr.isen.amadori.androiderestaurant.fragments.DetailsFragment
 import fr.isen.amadori.androiderestaurant.model.Dish
+import fr.isen.amadori.androiderestaurant.oders.Order
+import fr.isen.amadori.androiderestaurant.oders.OrderInfo
+import org.json.JSONObject
+import java.io.File
 
 
 private lateinit var binding: ActivityDetailsBinding
@@ -28,7 +32,7 @@ class DetailsActivity : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
     fun setPrice(dishInfo: Dish) {
         val price_quantity: Double = quantity.toDouble() * dishInfo.getPrice()
-        binding.idPriceRepasDetails.text = price_quantity.toString() + "€"
+        binding.idPriceRepasDetails.text = "Total :" + price_quantity.toString() + "€"
     }
 
     @SuppressLint("SetTextI18n")
@@ -37,11 +41,10 @@ class DetailsActivity : AppCompatActivity() {
         binding = ActivityDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val dishInfo: Dish? = intent.getSerializableExtra(MenuActivity.NOMREPASDETAILS) as? Dish
-        if (dishInfo != null) {
-            binding.idIngredientsRepasDetails.text = dishInfo.getIngredients()
-        }
-        if (dishInfo != null) {
+        val dishInfo: Dish = intent.getSerializableExtra(MenuActivity.NOMREPASDETAILS) as Dish
+        binding.idIngredientsRepasDetails.text = dishInfo.getIngredients()
+
+        /*if (dishInfo != null) {
             //Picasso.get().load(dishInfo.getFirstImage()).into(binding.idImageRepasDetails)
             val sampleImages = intArrayOf(
                 R.drawable.guide_michelin,
@@ -58,30 +61,44 @@ class DetailsActivity : AppCompatActivity() {
                 }
            // binding.carouselView.pageCount = sampleImages.size
             //binding.carouselView.setImageListener(imageListener)
-        }
-        if (dishInfo != null) {
-            binding.idNomRepasDetails.text = dishInfo.title
-            binding.idPriceRepasDetails.text = dishInfo.getFormattedPrice()
-        }
+        }*/
+        binding.idNomRepasDetails.text = dishInfo.title
+        binding.idPriceRepasDetails.text = "Total :" + dishInfo.getFormattedPrice()
+
         binding.idFloatButtonPlus.setOnClickListener {
             quantity++
             setText()
-            if (dishInfo != null) {
-                setPrice(dishInfo)
-            }
+            setPrice(dishInfo)
         }
         binding.idFloatButtonMinus.setOnClickListener {
             if (quantity > 1) {
                 quantity--
             }
             setText()
-            if (dishInfo != null) {
-                setPrice(dishInfo)
-            }
+            setPrice(dishInfo)
         }
+        binding.idPagerVeiw.adapter = DetailsCarouselAdapter(this, dishInfo.images)
+        binding.idPriceRepasDetails.setOnClickListener {
+            Snackbar.make(
+                binding.root,
+                quantity.toString() + "x " + dishInfo.title + " Ajouté au panier",
+                Snackbar.LENGTH_SHORT
+            ).show()
+            jsonOrderFile(dishInfo, quantity)
+        }
+    }
 
-        if (dishInfo != null) {
-            binding.idPagerVeiw.adapter = DetailsCarouselAdapter(this, dishInfo.images)
+    fun jsonOrderFile(dishInfo: Dish, quantity: Int) {
+        val file_name = File(cacheDir.absolutePath + "Basket.json")
+        val gson = GsonBuilder().setPrettyPrinting().create()
+        if (file_name.exists()) {
+            val json = gson.fromJson(file_name.readText(), OrderInfo::class.java)
+            json.dish = dishInfo
+            json.quantity = quantity
+            file_name.writeText(gson.toJson(json))
+        }else{
+            val jsonObject =  gson.toJson(OrderInfo(dishInfo,quantity))
+            file_name.writeText(jsonObject)
         }
 
     }

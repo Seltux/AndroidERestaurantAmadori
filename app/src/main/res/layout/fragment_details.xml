@@ -11,7 +11,9 @@
             android:id="@+id/idCarouselImage"
             android:layout_width="match_parent"
             android:layout_height="200dp"
+            android:adjustViewBounds="true"
             android:contentDescription="@string/carouselimage"
+            android:scaleType="centerCrop"
             android:src="@drawable/ic_launcher_background" />
 
 
