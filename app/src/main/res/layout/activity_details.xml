@@ -19,10 +19,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/carouselView"
+        app:layout_constraintTop_toBottomOf="@+id/idPagerVeiw"
         app:layout_constraintVertical_bias="0.042" />
 
-    <com.synnapps.carouselview.CarouselView
+    <!--app:layout_constraintTop_toBottomOf="@+id/carouselView"-->
+
+    <!--<com.synnapps.carouselview.CarouselView
         android:id="@+id/carouselView"
         android:layout_width="match_parent"
         android:layout_height="200dp"
@@ -35,8 +37,15 @@
         app:slideInterval="6000"
         app:strokeColor="@color/green_italie_2"
         app:strokeWidth="2dp"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints" />-->
 
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/idPagerVeiw"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
     <TextView
         android:id="@+id/idIngredientsRepasDetails"
         android:layout_width="0dp"
@@ -49,18 +58,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/idNomRepasDetails" />
 
-    <TextView
+    <Button
         android:id="@+id/idPriceRepasDetails"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="300dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/green_italie_2"
         android:elevation="15dp"
         android:fontFamily="@font/italiana2"
         android:text="@string/prix_details"
         android:textAlignment="center"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -117,6 +127,7 @@
         app:layout_constraintTop_toBottomOf="@+id/idIngredientsRepasDetails"
         app:layout_constraintVertical_bias="0.81"
         tools:ignore="TextViewEdits" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

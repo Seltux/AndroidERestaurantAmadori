@@ -46,6 +46,7 @@ dependencies {
     implementation 'com.synnapps:carouselview:0.1.4'
     implementation 'com.google.android.material:material:1.2.1'
     implementation "com.airbnb.android:lottie:3.4.0"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'

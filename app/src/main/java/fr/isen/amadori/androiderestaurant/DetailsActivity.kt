@@ -7,6 +7,8 @@ import com.squareup.picasso.Picasso
 import com.synnapps.carouselview.ImageListener
 import fr.isen.amadori.androiderestaurant.category.MenuActivity
 import fr.isen.amadori.androiderestaurant.databinding.ActivityDetailsBinding
+import fr.isen.amadori.androiderestaurant.fragments.DetailsCarouselAdapter
+import fr.isen.amadori.androiderestaurant.fragments.DetailsFragment
 import fr.isen.amadori.androiderestaurant.model.Dish
 
 
@@ -54,8 +56,8 @@ class DetailsActivity : AppCompatActivity() {
                         imageView
                     )
                 }
-            binding.carouselView.pageCount = sampleImages.size
-            binding.carouselView.setImageListener(imageListener)
+           // binding.carouselView.pageCount = sampleImages.size
+            //binding.carouselView.setImageListener(imageListener)
         }
         if (dishInfo != null) {
             binding.idNomRepasDetails.text = dishInfo.title
@@ -76,6 +78,10 @@ class DetailsActivity : AppCompatActivity() {
             if (dishInfo != null) {
                 setPrice(dishInfo)
             }
+        }
+
+        if (dishInfo != null) {
+            binding.idPagerVeiw.adapter = DetailsCarouselAdapter(this, dishInfo.images)
         }
 
     }
