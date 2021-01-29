@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:elevation="5dp"
+    android:elevation="10dp"
     tools:context=".DetailsActivity">
 
     <TextView
@@ -19,23 +19,23 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idImageRepasDetails"
-        app:layout_constraintVertical_bias="0.123" />
+        app:layout_constraintTop_toBottomOf="@+id/carouselView"
+        app:layout_constraintVertical_bias="0.042" />
 
-    <ImageView
-        android:id="@+id/idImageRepasDetails"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="8dp"
-        android:contentDescription="@string/image_du_repas_choisis"
-        android:elevation="5dp"
+    <com.synnapps.carouselview.CarouselView
+        android:id="@+id/carouselView"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:fillColor="@color/green_italie_contrast"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:pageColor="#00000000"
+        app:radius="6dp"
+        app:slideInterval="6000"
+        app:strokeColor="@color/green_italie_2"
+        app:strokeWidth="2dp"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/idIngredientsRepasDetails"
@@ -67,4 +67,56 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/idIngredientsRepasDetails" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/idFloatButtonPlus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="112dp"
+        android:clickable="true"
+        android:contentDescription="@string/plus_button"
+        android:focusable="true"
+        app:backgroundTint="@color/green_italie_2"
+        app:layout_constraintBottom_toTopOf="@+id/idPriceRepasDetails"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.36"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idIngredientsRepasDetails"
+        app:layout_constraintVertical_bias="0.627"
+        app:srcCompat="@drawable/ic_plus_24" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/idFloatButtonMinus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="112dp"
+        android:clickable="true"
+        android:contentDescription="@string/minus_button"
+        android:focusable="true"
+        app:backgroundTint="@color/green_italie_2"
+        app:layout_constraintBottom_toTopOf="@+id/idPriceRepasDetails"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.707"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idIngredientsRepasDetails"
+        app:layout_constraintVertical_bias="0.627"
+        app:srcCompat="@drawable/ic_minus_24" />
+
+    <TextView
+        android:id="@+id/idQuantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        android:inputType="number"
+        android:text="@string/quantity_1"
+        app:layout_constraintBottom_toTopOf="@+id/idPriceRepasDetails"
+        app:layout_constraintEnd_toStartOf="@+id/idFloatButtonMinus"
+        app:layout_constraintHorizontal_bias="0.692"
+        app:layout_constraintStart_toEndOf="@+id/idFloatButtonPlus"
+        app:layout_constraintTop_toBottomOf="@+id/idIngredientsRepasDetails"
+        app:layout_constraintVertical_bias="0.81"
+        tools:ignore="TextViewEdits" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

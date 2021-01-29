@@ -1,19 +1,24 @@
 package fr.isen.amadori.androiderestaurant
 
 import android.os.Bundle
-import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.NavUtils
 import com.squareup.picasso.Picasso
-import fr.isen.amadori.androiderestaurant.category.CategoriesAdapter
+import com.synnapps.carouselview.ImageListener
 import fr.isen.amadori.androiderestaurant.category.MenuActivity
 import fr.isen.amadori.androiderestaurant.databinding.ActivityDetailsBinding
 import fr.isen.amadori.androiderestaurant.model.Dish
-import java.io.Serializable
+
 
 private lateinit var binding:ActivityDetailsBinding
 
 class DetailsActivity : AppCompatActivity() {
+
+    var quantity = 0
+
+    fun setText() {
+        binding.idQuantity.setText(quantity.toString() + "")
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailsBinding.inflate(layoutInflater)
@@ -24,7 +29,20 @@ class DetailsActivity : AppCompatActivity() {
             binding.idIngredientsRepasDetails.text = dishInfo.getIngredients()
         }
         if (dishInfo != null) {
-            Picasso.get().load(dishInfo.getFirstImage()).into(binding.idImageRepasDetails)
+            //Picasso.get().load(dishInfo.getFirstImage()).into(binding.idImageRepasDetails)
+            val sampleImages = intArrayOf(
+                R.drawable.guide_michelin,
+                R.drawable.jokes_about_italians,
+                R.drawable.kebab_boeuf,
+                R.drawable.logo_restaurant,
+                R.drawable.pizza
+            )
+            val imageListener =
+                ImageListener { position, imageView -> Picasso.get().load(dishInfo.getFirstImage()).into(
+                    imageView
+                ) }
+            binding.carouselView.pageCount = sampleImages.size
+            binding.carouselView.setImageListener(imageListener)
         }
         if (dishInfo != null) {
             binding.idNomRepasDetails.text = dishInfo.title
@@ -32,5 +50,16 @@ class DetailsActivity : AppCompatActivity() {
         if (dishInfo != null) {
             binding.idPriceRepasDetails.text = dishInfo.getFormattedPrice()
         }
+        binding.idFloatButtonPlus.setOnClickListener {
+            quantity++
+            setText()
+        }
+        binding.idFloatButtonMinus.setOnClickListener {
+            if(quantity>1) {
+                quantity--
+            }
+            setText()
+        }
+
     }
 }
