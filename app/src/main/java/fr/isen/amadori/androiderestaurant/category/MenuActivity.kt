@@ -1,6 +1,5 @@
     package fr.isen.amadori.androiderestaurant.category
 
-
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -8,7 +7,6 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener
-import com.airbnb.lottie.LottieCompositionFactory
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
@@ -27,6 +25,8 @@ class MenuActivity : AppCompatActivity() {
     companion object{
         const val NOMREPASDETAILS = "nom_repas_details"
     }
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

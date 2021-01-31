@@ -26,29 +26,12 @@
     <string name="minus_button">Minus Button</string>
     <string name="quantity">quantity</string>
     <string name="quantity_1">1</string>
-
-    <string-array name="menu_array">
-        <item>Petite Sardines</item>
-        <item>Assiette Jambom de parme et Mozarella di bufala</item>
-        <item>Assiette d\'antispasti Italien</item>
-        <item>gambas et courgettes en beignet sauce tartare</item>
-        <item>Carpacio de boeuf frais</item>
-    </string-array>
-    <string-array name="plats">
-        <item>Plats</item>
-        <item>Assiette Jambom de parme et Mozarella di bufala</item>
-        <item>Assiette d\'antispasti Italien</item>
-        <item>FRITTO MISTO gambas et courgettes en beignet sauce tartare</item>
-        <item>Carpacio de boeuf frais</item>
-    </string-array>
-    <string-array name="desserts">
-        <item>Dessert</item>
-        <item>Assiette Jambom de parme et Mozarella di bufala</item>
-        <item>Assiette d\'antispasti Italien</item>
-        <item>FRITTO MISTO gambas et courgettes en beignet sauce tartare</item>
-        <item>Carpacio de boeuf frais</item>
-    </string-array>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="lorem_ipsum">lorem_ipsum</string>
     <string name="carouselimage">CarouselImage</string>
+    <string name="shoping_cart">Shoping Cart</string>
+    <string name="image_de_panier">Image de panier</string>
+    <string name="titre">titre</string>
+    <string name="_100">100</string>
+    <string name="_2">2</string>
 </resources>

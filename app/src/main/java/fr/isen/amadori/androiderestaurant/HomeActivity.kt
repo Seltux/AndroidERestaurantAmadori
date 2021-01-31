@@ -1,11 +1,17 @@
 package fr.isen.amadori.androiderestaurant
 
+import android.R
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.widget.FrameLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.MenuItemCompat
 import fr.isen.amadori.androiderestaurant.category.MenuActivity
 import fr.isen.amadori.androiderestaurant.databinding.ActivityHomeBinding
 
@@ -53,4 +59,5 @@ class HomeActivity : AppCompatActivity() {
         //Affichage d'un log lors de "onDestroy()"
         Log.i(TAG,"onDestroy() Called")
     }
+
 }

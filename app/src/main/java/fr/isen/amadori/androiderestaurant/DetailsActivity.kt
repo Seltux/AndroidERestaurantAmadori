@@ -2,9 +2,15 @@ package fr.isen.amadori.androiderestaurant
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.FrameLayout
+import android.widget.RelativeLayout
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.MenuItemCompat
 import com.google.android.material.snackbar.Snackbar
-import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import fr.isen.amadori.androiderestaurant.category.MenuActivity
 import fr.isen.amadori.androiderestaurant.databinding.ActivityDetailsBinding
@@ -12,7 +18,6 @@ import fr.isen.amadori.androiderestaurant.fragments.DetailsCarouselAdapter
 import fr.isen.amadori.androiderestaurant.model.Dish
 import fr.isen.amadori.androiderestaurant.oders.Order
 import fr.isen.amadori.androiderestaurant.oders.OrderInfo
-import org.json.JSONObject
 import java.io.File
 
 
@@ -21,7 +26,6 @@ private lateinit var binding: ActivityDetailsBinding
 class DetailsActivity : AppCompatActivity() {
 
     var quantity = 1
-
 
     @SuppressLint("SetTextI18n")
     fun setText() {
@@ -104,6 +108,17 @@ class DetailsActivity : AppCompatActivity() {
             val jsonObject =  gson.toJson(Order(mutableListOf(orderInfo)))
             file_name.writeText(jsonObject)
         }
+    }
+    @SuppressLint("SetTextI18n")
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_item,menu)
+        val menuItem: MenuItem = menu!!.findItem(R.id.badge)
+        MenuItemCompat.setActionView(menuItem,R.layout.header_layout)
+        val badgeNotif: ConstraintLayout = menuItem.actionView as ConstraintLayout
+        val txtView : TextView = badgeNotif.findViewById(R.id.idDishCount)
+        txtView.text = "10"
 
+
+        return true
     }
 }
