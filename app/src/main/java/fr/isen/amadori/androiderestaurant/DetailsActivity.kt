@@ -94,7 +94,11 @@ class DetailsActivity : AppCompatActivity() {
         val orderInfo = OrderInfo(dishInfo, quantity)
         if (file_name.exists()) {
             val json = gson.fromJson(file_name.readText(), Order::class.java)
-            json.orders.add(orderInfo)
+            json.orders.firstOrNull{ it.dish == dishInfo}?.let {
+                it.quantity.apply { it.quantity += quantity }
+            }?: run {
+                json.orders.add(orderInfo)
+            }
             file_name.writeText(gson.toJson(json))
         }else{
             val jsonObject =  gson.toJson(Order(mutableListOf(orderInfo)))
