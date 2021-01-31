@@ -91,13 +91,13 @@ class DetailsActivity : AppCompatActivity() {
     fun jsonOrderFile(dishInfo: Dish, quantity: Int) {
         val file_name = File(cacheDir.absolutePath + "Basket.json")
         val gson = GsonBuilder().setPrettyPrinting().create()
+        val orderInfo = OrderInfo(dishInfo, quantity)
         if (file_name.exists()) {
-            val json = gson.fromJson(file_name.readText(), OrderInfo::class.java)
-            json.dish = dishInfo
-            json.quantity = quantity
+            val json = gson.fromJson(file_name.readText(), Order::class.java)
+            json.orders.add(orderInfo)
             file_name.writeText(gson.toJson(json))
         }else{
-            val jsonObject =  gson.toJson(OrderInfo(dishInfo,quantity))
+            val jsonObject =  gson.toJson(Order(mutableListOf(orderInfo)))
             file_name.writeText(jsonObject)
         }
 
