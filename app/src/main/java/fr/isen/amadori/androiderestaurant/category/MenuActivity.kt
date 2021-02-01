@@ -11,6 +11,7 @@ import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
+import fr.isen.amadori.androiderestaurant.BaseActivity
 import fr.isen.amadori.androiderestaurant.DetailsActivity
 import fr.isen.amadori.androiderestaurant.HomeActivity
 import fr.isen.amadori.androiderestaurant.databinding.ActivityMenuBinding
@@ -21,7 +22,7 @@ import org.json.JSONObject
 
 
     private lateinit var binding: ActivityMenuBinding
-class MenuActivity : AppCompatActivity() {
+class MenuActivity  : BaseActivity()  {
     companion object{
         const val NOMREPASDETAILS = "nom_repas_details"
     }

@@ -26,7 +26,7 @@ class CategoriesAdapter(
         }
         p0.prix_repas.text = categories[p1].getFormattedPrice()
         if(categories[p1].getFirstImage() != null) {
-            Picasso.get().load(categories[p1].getFirstImage()).networkPolicy(NetworkPolicy.OFFLINE).placeholder(R.drawable.logo_restaurant).error(
+            Picasso.get().load(categories[p1].getFirstImage()).placeholder(R.drawable.logo_restaurant).error(
                 R.drawable.jokes_about_italians)
                 .into(p0.image_repas)
         }else{
@@ -44,15 +44,4 @@ class CategoriesAdapter(
         val image_repas = binding.idImageRepas
 
     }
-
-   /* // Clean all elements of the recycler
-    fun clear() {
-        notifyDataSetChanged()
-    }
-
-    // Add a list of items -- change to type used
-    fun addAll(list: List<Dish?>?) {
-        items.addAll(list)
-        notifyDataSetChanged()
-    }*/
 }

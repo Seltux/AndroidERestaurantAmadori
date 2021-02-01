@@ -2,15 +2,15 @@ package fr.isen.amadori.androiderestaurant
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.FrameLayout
-import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.MenuItemCompat
 import com.google.android.material.snackbar.Snackbar
+import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import fr.isen.amadori.androiderestaurant.category.MenuActivity
 import fr.isen.amadori.androiderestaurant.databinding.ActivityDetailsBinding
@@ -23,7 +23,7 @@ import java.io.File
 
 private lateinit var binding: ActivityDetailsBinding
 
-class DetailsActivity : AppCompatActivity() {
+class DetailsActivity : BaseActivity() {
 
     var quantity = 1
 
@@ -39,36 +39,33 @@ class DetailsActivity : AppCompatActivity() {
         binding.idPriceRepasDetails.text = "Total :" + price_quantity.toString() + "€"
     }
 
-    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
         val dishInfo: Dish = intent.getSerializableExtra(MenuActivity.NOMREPASDETAILS) as Dish
-        binding.idIngredientsRepasDetails.text = dishInfo.getIngredients()
+        getInfoAboutDish(binding, dishInfo)
+        updateQuantity(binding, dishInfo)
+        displaySnackBarAndJson(binding, dishInfo)
+        invalidateOptionsMenu()
+    }
 
-        /*if (dishInfo != null) {
-            //Picasso.get().load(dishInfo.getFirstImage()).into(binding.idImageRepasDetails)
-            val sampleImages = intArrayOf(
-                R.drawable.guide_michelin,
-                R.drawable.jokes_about_italians,
-                R.drawable.kebab_boeuf,
-                R.drawable.logo_restaurant,
-                R.drawable.pizza
-            )
-            val imageListener =
-                ImageListener { position, imageView ->
-                    Picasso.get().load(dishInfo.getFirstImage()).into(
-                        imageView
-                    )
-                }
-           // binding.carouselView.pageCount = sampleImages.size
-            //binding.carouselView.setImageListener(imageListener)
-        }*/
-        binding.idNomRepasDetails.text = dishInfo.title
-        binding.idPriceRepasDetails.text = "Total :" + dishInfo.getFormattedPrice()
+    fun displaySnackBarAndJson(binding: ActivityDetailsBinding, dishInfo: Dish) {
+        binding.idPagerVeiw.adapter = DetailsCarouselAdapter(this, dishInfo.images)
+        binding.idPriceRepasDetails.setOnClickListener {
+            Snackbar.make(
+                binding.root,
+                quantity.toString() + "x " + dishInfo.title + " Ajouté au panier",
+                Snackbar.LENGTH_SHORT
+            ).show()
+            jsonOrderFile(dishInfo, quantity)
 
+        }
+    }
+
+    fun updateQuantity(binding: ActivityDetailsBinding, dishInfo: Dish) {
         binding.idFloatButtonPlus.setOnClickListener {
             quantity++
             setText()
@@ -81,15 +78,13 @@ class DetailsActivity : AppCompatActivity() {
             setText()
             setPrice(dishInfo)
         }
-        binding.idPagerVeiw.adapter = DetailsCarouselAdapter(this, dishInfo.images)
-        binding.idPriceRepasDetails.setOnClickListener {
-            Snackbar.make(
-                binding.root,
-                quantity.toString() + "x " + dishInfo.title + " Ajouté au panier",
-                Snackbar.LENGTH_SHORT
-            ).show()
-            jsonOrderFile(dishInfo, quantity)
-        }
+    }
+
+    @SuppressLint("SetTextI18n")
+    fun getInfoAboutDish(binding: ActivityDetailsBinding, dishInfo: Dish) {
+        binding.idIngredientsRepasDetails.text = dishInfo.getIngredients()
+        binding.idNomRepasDetails.text = dishInfo.title
+        binding.idPriceRepasDetails.text = "Total :" + dishInfo.getFormattedPrice()
     }
 
     fun jsonOrderFile(dishInfo: Dish, quantity: Int) {
@@ -98,27 +93,18 @@ class DetailsActivity : AppCompatActivity() {
         val orderInfo = OrderInfo(dishInfo, quantity)
         if (file_name.exists()) {
             val json = gson.fromJson(file_name.readText(), Order::class.java)
-            json.orders.firstOrNull{ it.dish == dishInfo}?.let {
+            json.orders.firstOrNull { it.dish == dishInfo }?.let {
                 it.quantity.apply { it.quantity += quantity }
-            }?: run {
+            } ?: run {
                 json.orders.add(orderInfo)
             }
+            updateQuantityBasket(json)
             file_name.writeText(gson.toJson(json))
-        }else{
-            val jsonObject =  gson.toJson(Order(mutableListOf(orderInfo)))
-            file_name.writeText(jsonObject)
+        } else {
+            val order = Order(mutableListOf(OrderInfo(dishInfo,quantity)))
+            updateQuantityBasket(order)
+            file_name.writeText(gson.toJson(Order(mutableListOf(orderInfo))))
         }
     }
-    @SuppressLint("SetTextI18n")
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_item,menu)
-        val menuItem: MenuItem = menu!!.findItem(R.id.badge)
-        MenuItemCompat.setActionView(menuItem,R.layout.header_layout)
-        val badgeNotif: ConstraintLayout = menuItem.actionView as ConstraintLayout
-        val txtView : TextView = badgeNotif.findViewById(R.id.idDishCount)
-        txtView.text = "10"
-
-
-        return true
-    }
 }
+

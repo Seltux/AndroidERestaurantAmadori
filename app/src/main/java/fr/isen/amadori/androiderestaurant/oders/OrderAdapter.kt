@@ -1,28 +1,50 @@
 package fr.isen.amadori.androiderestaurant.oders
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import fr.isen.amadori.androiderestaurant.DetailsActivity
+import fr.isen.amadori.androiderestaurant.FinalOrderActivity
+import fr.isen.amadori.androiderestaurant.R
+import fr.isen.amadori.androiderestaurant.databinding.ActivityFinalOrderBinding
+import fr.isen.amadori.androiderestaurant.databinding.OrderItemBinding
 import fr.isen.amadori.androiderestaurant.databinding.OrdersDetailsBinding
+import fr.isen.amadori.androiderestaurant.model.Dish
 
 class OrderAdapter(
-    private val orders: List<Order>,
-    private val details_orders: DetailsActivity
-): RecyclerView.Adapter<OrderAdapter.OrderHolder>() {
+    private val orders: MutableList<OrderInfo>,
+    context: Context
+) : RecyclerView.Adapter<OrderAdapter.OrderHolder>() {
 
 
-    class OrderHolder(binding: OrdersDetailsBinding) : RecyclerView.ViewHolder(binding.root){
-
+    class OrderHolder(binding: OrderItemBinding) : RecyclerView.ViewHolder(binding.root) {
+        val layout = binding.root
+        val title = binding.idNomRepas
+        val prixTotal = binding.idPrixTotalItem
+        val totalQuantity = binding.idNombreItem
+        val delete = binding.idDeleteItem
+        val image_repas = binding.idImageRepas
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OrderHolder {
-        val itemBinding = OrdersDetailsBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val itemBinding =
+            OrderItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return OrderHolder(itemBinding)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: OrderHolder, position: Int) {
-        TODO("Not yet implemented")
+        holder.title.text = orders[position].dish.title
+        holder.prixTotal.text = (orders[position].quantity*orders[position].dish.getPrice()).toString() + "€"
+        holder.totalQuantity.text ="x"+ orders[position].quantity.toString()
+        if(orders[position].dish.getFirstImage() != null){
+            Picasso.get().load(orders[position].dish.getFirstImage()).placeholder(R.drawable.logo_restaurant).error(R.drawable.jokes_about_italians).into(holder.image_repas)
+        }else{
+            Picasso.get().load(R.drawable.jokes_about_italians).into(holder.image_repas)
+        }
     }
 
     override fun getItemCount() = orders.size
