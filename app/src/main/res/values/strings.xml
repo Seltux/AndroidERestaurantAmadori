@@ -45,4 +45,11 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="nombre_de_ce_plat">Nombre_de_ce_plat</string>
     <string name="supprimer">Supprimer</string>
+    <string name="lastname">Lastname</string>
+    <string name="address">Address</string>
+    <string name="email">Email</string>
+    <string name="password_verification">Password Verification</string>
+    <string name="firstname">Firstname</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="sign_up_form">Sign Up Form</string>
 </resources>
