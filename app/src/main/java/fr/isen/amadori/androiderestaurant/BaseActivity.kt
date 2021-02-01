@@ -39,6 +39,7 @@ open class BaseActivity : AppCompatActivity() {
         val quantity = order.orders.sumOf { it.quantity }
         val sharedPref = getSharedPreferences(PREF_SHARED, MODE_PRIVATE)
         sharedPref.edit().putInt(ORDER_COUNT,quantity).apply()
+        invalidateOptionsMenu()
     }
 
 

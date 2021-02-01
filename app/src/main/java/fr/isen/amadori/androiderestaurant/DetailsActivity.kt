@@ -49,7 +49,6 @@ class DetailsActivity : BaseActivity() {
         getInfoAboutDish(binding, dishInfo)
         updateQuantity(binding, dishInfo)
         displaySnackBarAndJson(binding, dishInfo)
-        invalidateOptionsMenu()
     }
 
     fun displaySnackBarAndJson(binding: ActivityDetailsBinding, dishInfo: Dish) {

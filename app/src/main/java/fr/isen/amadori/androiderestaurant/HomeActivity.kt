@@ -43,7 +43,6 @@ class HomeActivity : BaseActivity() {
             val key = "Plats"
             menu.putExtra(CATEGORY,key)
             startActivity(menu)
-            invalidateOptionsMenu()
         }
     }
 

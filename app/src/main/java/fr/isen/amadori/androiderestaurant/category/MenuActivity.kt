@@ -41,7 +41,6 @@ class MenuActivity  : BaseActivity()  {
 
         //load data
         volleyPost(intent.getStringExtra("Category") ?: "")
-
     }
 
 

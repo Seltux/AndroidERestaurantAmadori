@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidERestaurant"
         android:usesCleartextTraffic="true">
-        <activity android:name=".BaseActivity"></activity>
+        <activity android:name=".BaseActivity" />
         <activity android:name=".FinalOrderActivity" />
         <activity
             android:name=".DetailsActivity"

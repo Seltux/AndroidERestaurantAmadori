@@ -16,7 +16,7 @@ import fr.isen.amadori.androiderestaurant.model.Dish
 
 class OrderAdapter(
     private val orders: MutableList<OrderInfo>,
-    context: Context
+    private val deleteOrderClickListener: (OrderInfo) -> Unit
 ) : RecyclerView.Adapter<OrderAdapter.OrderHolder>() {
 
 
@@ -38,15 +38,30 @@ class OrderAdapter(
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: OrderHolder, position: Int) {
         holder.title.text = orders[position].dish.title
-        holder.prixTotal.text = (orders[position].quantity*orders[position].dish.getPrice()).toString() + "€"
-        holder.totalQuantity.text ="x"+ orders[position].quantity.toString()
-        if(orders[position].dish.getFirstImage() != null){
-            Picasso.get().load(orders[position].dish.getFirstImage()).placeholder(R.drawable.logo_restaurant).error(R.drawable.jokes_about_italians).into(holder.image_repas)
-        }else{
+        holder.prixTotal.text =
+            (orders[position].quantity * orders[position].dish.getPrice()).toString() + "€"
+        holder.totalQuantity.text = "x" + orders[position].quantity.toString()
+        if (orders[position].dish.getFirstImage() != null) {
+            Picasso.get().load(orders[position].dish.getFirstImage())
+                .placeholder(R.drawable.logo_restaurant).error(R.drawable.jokes_about_italians)
+                .into(holder.image_repas)
+        } else {
             Picasso.get().load(R.drawable.jokes_about_italians).into(holder.image_repas)
+        }
+        holder.delete.setOnClickListener {
+            deleteOrder(position)
+            deleteOrderClickListener.invoke(orders[position])
         }
     }
 
     override fun getItemCount() = orders.size
 
+    fun deleteOrder(position: Int) {
+        if (orders[position].quantity != 1) {
+            orders[position].quantity--
+        } else {
+            orders.removeAt(position)
+        }
+    }
 }
+
