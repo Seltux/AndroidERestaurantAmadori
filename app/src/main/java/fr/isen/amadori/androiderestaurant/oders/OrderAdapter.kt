@@ -2,13 +2,16 @@ package fr.isen.amadori.androiderestaurant.oders
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import fr.isen.amadori.androiderestaurant.DetailsActivity
 import fr.isen.amadori.androiderestaurant.FinalOrderActivity
 import fr.isen.amadori.androiderestaurant.R
+import fr.isen.amadori.androiderestaurant.SignUpActivity
 import fr.isen.amadori.androiderestaurant.databinding.ActivityFinalOrderBinding
 import fr.isen.amadori.androiderestaurant.databinding.OrderItemBinding
 import fr.isen.amadori.androiderestaurant.databinding.OrdersDetailsBinding
@@ -16,7 +19,9 @@ import fr.isen.amadori.androiderestaurant.model.Dish
 
 class OrderAdapter(
     private val orders: MutableList<OrderInfo>,
+    private val buttonToFinaliseOrder: Button,
     private val deleteOrderClickListener: (OrderInfo) -> Unit
+
 ) : RecyclerView.Adapter<OrderAdapter.OrderHolder>() {
 
 
@@ -41,6 +46,7 @@ class OrderAdapter(
         holder.prixTotal.text =
             (orders[position].quantity * orders[position].dish.getPrice()).toString() + "€"
         holder.totalQuantity.text = "x" + orders[position].quantity.toString()
+        buttonToFinaliseOrder.text = "Payer :" + getPriceTotalOrder(Order(orders)).toString() + "€"
         if (orders[position].dish.getFirstImage() != null) {
             Picasso.get().load(orders[position].dish.getFirstImage())
                 .placeholder(R.drawable.logo_restaurant).error(R.drawable.jokes_about_italians)
@@ -51,10 +57,20 @@ class OrderAdapter(
         holder.delete.setOnClickListener {
             deleteOrder(position)
             deleteOrderClickListener.invoke(orders[position])
+            buttonToFinaliseOrder.text = "Payer :" + getPriceTotalOrder(Order(orders)).toString() + "€"
+            notifyDataSetChanged()
         }
     }
 
     override fun getItemCount() = orders.size
+
+    fun getPriceTotalOrder(order: Order): Double{
+        var total: Double = 0.0
+        for (i in order.orders){
+            total += (i.dish.getPrice()*i.quantity)
+        }
+        return total
+    }
 
     fun deleteOrder(position: Int) {
         if (orders[position].quantity != 1) {

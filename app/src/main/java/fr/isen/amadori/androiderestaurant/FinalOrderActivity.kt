@@ -1,6 +1,7 @@
 package fr.isen.amadori.androiderestaurant
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.view.isVisible
@@ -23,7 +24,11 @@ class FinalOrderActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.idVotrePanier.text = "Votre Panier :"
-        //binding.idCategoryLoaderPanier.isVisible = false
+        binding.idCategoryLoaderPanier.isVisible = false
+        binding.idButtonPayOrder.setOnClickListener {
+            val intent = Intent(this, SignUpActivity::class.java)
+            startActivity(intent)
+        }
         readFileJson()
     }
 
@@ -34,7 +39,7 @@ class FinalOrderActivity : AppCompatActivity() {
         if (file_name.exists()) {
             val order = gson.fromJson(file_name.readText(), Order::class.java)
             val recyclerView = binding.idListPanier
-           recyclerView.adapter = OrderAdapter(order.orders.toMutableList()) {
+           recyclerView.adapter = OrderAdapter(order.orders,binding.idButtonPayOrder) {
                 order.orders.remove(it)
                 deleteOrder(order)
             }

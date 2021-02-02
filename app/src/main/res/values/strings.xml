@@ -47,9 +47,17 @@
     <string name="supprimer">Supprimer</string>
     <string name="lastname">Lastname</string>
     <string name="address">Address</string>
-    <string name="email">Email</string>
     <string name="password_verification">Password Verification</string>
     <string name="firstname">Firstname</string>
     <string name="sign_up">Sign Up</string>
     <string name="sign_up_form">Sign Up Form</string>
+    <string name="payer">Payer</string>
+    <string name="gotologin">GoToLogin</string>
+    <string name="terms_and_condition">Terms and Condition</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login_login">Login_login</string>
+    <string name="login_in_signup">login_in_signup</string>
+    <string name="myaccount">MYACCOUNT</string>
+    <string name="connect">Connect</string>
 </resources>

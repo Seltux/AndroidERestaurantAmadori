@@ -21,7 +21,7 @@ class DetailsFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentDetailsBinding.inflate(inflater,container,false)
         val view = binding.root
         return view
@@ -29,7 +29,7 @@ class DetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         arguments?.takeIf {
-            it.containsKey(ARG)?.apply {
+            it.containsKey(ARG).apply {
                 val image = arguments?.getString(ARG)
 
                 if(!image.isNullOrEmpty()){
