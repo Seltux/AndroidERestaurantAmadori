@@ -77,6 +77,7 @@ class OrderAdapter(
             orders[position].quantity--
         } else {
             orders.removeAt(position)
+            notifyItemRemoved(position)
         }
     }
 }

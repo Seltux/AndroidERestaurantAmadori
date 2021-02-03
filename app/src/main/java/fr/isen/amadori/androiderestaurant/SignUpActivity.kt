@@ -9,6 +9,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.Request
+import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
@@ -120,16 +121,21 @@ class SignUpActivity : AppCompatActivity(), Validator.ValidationListener {
         }
         val jsonRequest = JsonObjectRequest(
             Request.Method.POST, postApiURL, postData, {
-               val gson = Gson().fromJson(it.toString(), UserJsonResult::class.java)
-                Log.i("success_api",gson.success_request.toString() )
-                if(gson.success_request == 200) {
-                    Toast.makeText(this, "Votre compte a bien été créé :)", Toast.LENGTH_SHORT)
-                        .show()
-                }
+                val gson = Gson().fromJson(it.toString(), UserJsonResult::class.java)
+                Toast.makeText(this, "Votre compte a bien été créé :)", Toast.LENGTH_SHORT)
+                    .show()
+                val sharedPref = this.getSharedPreferences(
+                    BaseActivity.PREF_SHARED,
+                    MODE_PRIVATE
+                )
+                sharedPref.edit().putInt(ID_USER,gson.data.id).apply()
             },
             { Log.e("error signu form", it.toString()) }
         )
         request.add(jsonRequest)
+    }
+    companion object{
+        const val ID_USER = "id_user"
     }
 }
 

@@ -3,9 +3,14 @@ package fr.isen.amadori.androiderestaurant
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
+import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.Volley
+import com.android.volley.Request
+import com.google.gson.Gson
 import com.mobsandgeeks.saripaar.ValidationError
 import com.mobsandgeeks.saripaar.Validator
 import com.mobsandgeeks.saripaar.annotation.Email
@@ -13,6 +18,8 @@ import com.mobsandgeeks.saripaar.annotation.Length
 import com.mobsandgeeks.saripaar.annotation.NotEmpty
 import com.mobsandgeeks.saripaar.annotation.Password
 import fr.isen.amadori.androiderestaurant.databinding.ActivityLoginBinding
+import fr.isen.amadori.androiderestaurant.model.UserJsonResult
+import org.json.JSONObject
 
 private lateinit var binding: ActivityLoginBinding
 
@@ -47,11 +54,12 @@ class LoginActivity : AppCompatActivity(), Validator.ValidationListener {
         }
         binding.idSubmitLogin.setOnClickListener {
             validator!!.validate()
+            verifyLoginUser()
         }
     }
 
     override fun onValidationSucceeded() {
-        Toast.makeText(this, "Formulaire correct, connecté", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Formulaire correct, connecté", Toast.LENGTH_SHORT).show()
     }
 
     override fun onValidationFailed(errors: MutableList<ValidationError>?) {
@@ -64,5 +72,35 @@ class LoginActivity : AppCompatActivity(), Validator.ValidationListener {
                 Toast.makeText(this, message, Toast.LENGTH_LONG).show()
             }
         }
+    }
+
+    private fun verifyLoginUser(){
+        val url = "http://test.api.catering.bluecodegames.com/user/login"
+        val jsonRequet = Volley.newRequestQueue(this)
+        val postData = JSONObject()
+        try{
+            postData.put("id_shop", "1")
+            postData.put("email", binding.idEmailLogin.text)
+            postData.put("password", binding.idPasswordLogin.text)
+        }catch (e: Exception){
+            e.printStackTrace()
+        }
+        val jsonObjectRequest = JsonObjectRequest(Request.Method.POST,url, postData, { response ->
+            val gson = Gson().fromJson(response.toString(), UserJsonResult::class.java)
+            this.getSharedPreferences(BaseActivity.PREF_SHARED, MODE_PRIVATE)?.edit()
+                ?.putInt(SignUpActivity.ID_USER, gson.data.id)
+                ?.apply()
+            Toast.makeText(
+                this,
+                "Connexion réussis, bienvenue" + gson.data.firstname + gson.data.lastname + ".",
+                Toast.LENGTH_LONG
+            ).show()
+            val intent = Intent(this, FinalOrderActivity::class.java)
+            startActivity(intent)
+        },
+            {
+                Log.e("error login form", it.toString())
+            })
+        jsonRequet.add(jsonObjectRequest)
     }
 }
