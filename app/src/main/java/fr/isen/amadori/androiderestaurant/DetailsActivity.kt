@@ -2,15 +2,7 @@ package fr.isen.amadori.androiderestaurant
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
-import android.view.Menu
-import android.view.MenuItem
-import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.view.MenuItemCompat
 import com.google.android.material.snackbar.Snackbar
-import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import fr.isen.amadori.androiderestaurant.category.MenuActivity
 import fr.isen.amadori.androiderestaurant.databinding.ActivityDetailsBinding

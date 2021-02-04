@@ -1,10 +1,10 @@
 package fr.isen.amadori.androiderestaurant.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.squareup.picasso.Picasso
 import fr.isen.amadori.androiderestaurant.R
 import fr.isen.amadori.androiderestaurant.databinding.FragmentDetailsBinding

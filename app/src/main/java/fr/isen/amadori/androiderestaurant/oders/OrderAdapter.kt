@@ -1,21 +1,13 @@
 package fr.isen.amadori.androiderestaurant.oders
 
 import android.annotation.SuppressLint
-import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
-import fr.isen.amadori.androiderestaurant.DetailsActivity
-import fr.isen.amadori.androiderestaurant.FinalOrderActivity
 import fr.isen.amadori.androiderestaurant.R
-import fr.isen.amadori.androiderestaurant.SignUpActivity
-import fr.isen.amadori.androiderestaurant.databinding.ActivityFinalOrderBinding
 import fr.isen.amadori.androiderestaurant.databinding.OrderItemBinding
-import fr.isen.amadori.androiderestaurant.databinding.OrdersDetailsBinding
-import fr.isen.amadori.androiderestaurant.model.Dish
 
 class OrderAdapter(
     private val orders: MutableList<OrderInfo>,

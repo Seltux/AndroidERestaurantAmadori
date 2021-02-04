@@ -1,15 +1,16 @@
 package fr.isen.amadori.androiderestaurant
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
-import com.android.volley.Request
+import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 import com.mobsandgeeks.saripaar.ValidationError
 import com.mobsandgeeks.saripaar.Validator
@@ -87,16 +88,20 @@ class LoginActivity : AppCompatActivity(), Validator.ValidationListener {
         }
         val jsonObjectRequest = JsonObjectRequest(Request.Method.POST,url, postData, { response ->
             val gson = Gson().fromJson(response.toString(), UserJsonResult::class.java)
-            this.getSharedPreferences(BaseActivity.PREF_SHARED, MODE_PRIVATE)?.edit()
-                ?.putInt(SignUpActivity.ID_USER, gson.data.id)
-                ?.apply()
-            Toast.makeText(
-                this,
-                "Connexion réussis, bienvenue" + gson.data.firstname + gson.data.lastname + ".",
-                Toast.LENGTH_LONG
-            ).show()
-            val intent = Intent(this, FinalOrderActivity::class.java)
-            startActivity(intent)
+            if(gson.data != null) {
+                this.getSharedPreferences(BaseActivity.PREF_SHARED, MODE_PRIVATE)?.edit()
+                    ?.putInt(SignUpActivity.ID_USER, gson.data.id)
+                    ?.apply()
+                Toast.makeText(
+                    this,
+                    "Connexion réussis, bienvenue" + gson.data.firstname + " " + gson.data.lastname + ".",
+                    Toast.LENGTH_LONG
+                ).show()
+                val intent = Intent(this, FinalOrderActivity::class.java)
+                startActivity(intent)
+            }else{
+                Snackbar.make(binding.root, "Ce compte n'existe pas veuillez le créer avant de vous connecter.", Snackbar.LENGTH_SHORT)
+            }
         },
             {
                 Log.e("error login form", it.toString())

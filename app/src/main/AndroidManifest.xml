@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="fr.isen.amadori.androiderestaurant">
+    package="fr.isen.amadori.androiderestaurant" >
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -12,18 +12,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidERestaurant"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true"
+        tools:targetApi="m" >
+        <activity android:name=".DeliveryActivity" >
+        </activity>
         <activity android:name=".LoginActivity" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".BaseActivity" />
         <activity android:name=".FinalOrderActivity" />
         <activity
             android:name=".DetailsActivity"
-            android:parentActivityName=".category.MenuActivity" />
+            android:parentActivityName=".HomeActivity" />
         <activity
             android:name=".category.MenuActivity"
             android:parentActivityName=".HomeActivity" />
-        <activity android:name=".HomeActivity">
+        <activity android:name=".HomeActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

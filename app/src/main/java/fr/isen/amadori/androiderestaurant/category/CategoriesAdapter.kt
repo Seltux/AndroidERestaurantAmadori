@@ -3,7 +3,6 @@ package fr.isen.amadori.androiderestaurant.category
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.NetworkPolicy
 import com.squareup.picasso.Picasso
 import fr.isen.amadori.androiderestaurant.R
 import fr.isen.amadori.androiderestaurant.databinding.RepasMenuBinding

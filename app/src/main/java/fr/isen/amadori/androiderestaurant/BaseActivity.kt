@@ -2,14 +2,12 @@ package fr.isen.amadori.androiderestaurant
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuItemCompat
-import androidx.core.view.isVisible
 import fr.isen.amadori.androiderestaurant.oders.Order
 
 open class BaseActivity : AppCompatActivity() {

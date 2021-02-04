@@ -34,12 +34,11 @@ class MenuActivity  : BaseActivity()  {
         binding = ActivityMenuBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.swipeContainer.setOnRefreshListener(OnRefreshListener {
+        binding.swipeContainer.setOnRefreshListener {
             binding.swipeContainer.setRefreshing(false)
-        })
+        }
         binding.idTitreMenu.text = intent.getStringExtra(HomeActivity.CATEGORY)
 
-        //load data
         volleyPost(intent.getStringExtra("Category") ?: "")
     }
 

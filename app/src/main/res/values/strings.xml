@@ -60,4 +60,7 @@
     <string name="login_in_signup">login_in_signup</string>
     <string name="myaccount">MYACCOUNT</string>
     <string name="connect">Connect</string>
+    <string name="order_in_process_of_shipment">Order in process of shipment</string>
+    <string name="menu">Menu</string>
+    <string name="thank_you_for_your_order_see_you_soon">Thank you for your order, see you soon.</string>
 </resources>
