@@ -64,4 +64,9 @@
     <string name="menu">Menu</string>
     <string name="thank_you_for_your_order_see_you_soon">Thank you for your order, see you soon.</string>
     <string name="button_setting">button_setting</string>
+    <string name="date">Date:</string>
+    <string name="mon_profil">Mon Profil</string>
+    <string name="nombre_de_commande">Nombre de commande</string>
+    <string name="nom">Nom</string>
+    <string name="se_d_connecter">Se déconnecter</string>
 </resources>
