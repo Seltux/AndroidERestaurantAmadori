@@ -31,6 +31,11 @@ class DetailsActivity : BaseActivity() {
         binding.idPriceRepasDetails.text = "Total :" + price_quantity.toString() + "€"
     }
 
+    override fun onResume() {
+        invalidateOptionsMenu()
+        super.onResume()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailsBinding.inflate(layoutInflater)

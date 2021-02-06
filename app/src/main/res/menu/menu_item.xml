@@ -5,5 +5,6 @@
         android:id="@+id/badge"
         android:actionLayout="@layout/header_layout"
         android:title="@string/titre"
-        app:showAsAction="always" />
+        app:showAsAction="ifRoom" />
+
 </menu>

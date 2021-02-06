@@ -42,6 +42,11 @@ class MenuActivity  : BaseActivity()  {
         volleyPost(intent.getStringExtra("Category") ?: "")
     }
 
+    override fun onResume() {
+        invalidateOptionsMenu()
+        super.onResume()
+    }
+
 
     fun volleyPost(category: String) {
         val postUrl = "http://test.api.catering.bluecodegames.com/menu"

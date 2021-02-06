@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuItemCompat
@@ -26,9 +27,13 @@ open class BaseActivity : AppCompatActivity() {
         val totalQuantity = sharedPref.getInt(ORDER_COUNT,0)
         order?.findViewById<TextView>(R.id.idDishCount)?.text = totalQuantity.toString()
 
-        order?.setOnClickListener{
+        order?.findViewById<ImageView>(R.id.idPizzaCart)?.setOnClickListener{
             val intent = Intent(this, FinalOrderActivity::class.java)
             startActivity(intent)
+        }
+
+        if(sharedPref.contains(SignUpActivity.ID_USER)){
+            
         }
         return true
     }

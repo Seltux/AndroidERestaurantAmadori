@@ -44,6 +44,12 @@ class HomeActivity : BaseActivity() {
             menu.putExtra(CATEGORY,key)
             startActivity(menu)
         }
+
+    }
+
+    override fun onResume() {
+        invalidateOptionsMenu()
+        super.onResume()
     }
 
     override fun onDestroy() {
