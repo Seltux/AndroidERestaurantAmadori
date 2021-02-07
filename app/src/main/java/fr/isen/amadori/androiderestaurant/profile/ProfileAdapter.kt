@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import fr.isen.amadori.androiderestaurant.databinding.HistoryOrderBinding
-import fr.isen.amadori.androiderestaurant.oders.Order
+import fr.isen.amadori.androiderestaurant.order.Order
 
 class ProfileAdapter(
     private val history: List<History>

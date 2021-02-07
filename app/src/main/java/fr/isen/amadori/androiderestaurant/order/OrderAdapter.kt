@@ -1,7 +1,6 @@
-package fr.isen.amadori.androiderestaurant.oders
+package fr.isen.amadori.androiderestaurant.order
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Button
@@ -9,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import fr.isen.amadori.androiderestaurant.R
 import fr.isen.amadori.androiderestaurant.databinding.OrderItemBinding
-import java.io.File
 
 class OrderAdapter(
     private val orders: MutableList<OrderInfo>,

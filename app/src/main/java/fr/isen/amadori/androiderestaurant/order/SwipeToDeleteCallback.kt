@@ -1,4 +1,4 @@
-package fr.isen.amadori.androiderestaurant.oders
+package fr.isen.amadori.androiderestaurant.order
 
 import android.content.Context
 import android.graphics.*

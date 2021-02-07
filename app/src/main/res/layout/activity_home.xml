@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
+    android:backgroundTint="#FFFFFF"
     tools:context=".HomeActivity">
 
 
@@ -119,5 +120,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/idSloganRestaurant"
         app:srcCompat="@drawable/pizza" />
+
+    <Button
+        android:id="@+id/idMapRestaurant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="#FFC107"
+        android:text="@string/le_restaurant"
+        app:layout_constraintBottom_toBottomOf="@+id/idPizzaImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idButtonDesserts" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

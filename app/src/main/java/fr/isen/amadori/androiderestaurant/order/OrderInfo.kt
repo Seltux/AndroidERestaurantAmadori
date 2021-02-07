@@ -1,4 +1,4 @@
-package fr.isen.amadori.androiderestaurant.oders
+package fr.isen.amadori.androiderestaurant.order
 
 import com.google.gson.annotations.SerializedName
 import fr.isen.amadori.androiderestaurant.model.Dish

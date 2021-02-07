@@ -71,4 +71,10 @@
     <string name="se_d_connecter">Se déconnecter</string>
     <string name="swiper_pour_supprimer">Swiper pour supprimer</string>
     <string name="image_profile_utilisateur">Image profile utilisateur</string>
+    <string name="maps_api_key" />
+    <string name="le_restaurant">LE RESTAURANT</string>
+    <string name="welcome">welcome</string>
+    <string name="bienvenue">Bienvenu</string>
+    <string name="bienvenu">Bienvenue</string>
+    <string name="benvenuto">Benvenuto</string>
 </resources>

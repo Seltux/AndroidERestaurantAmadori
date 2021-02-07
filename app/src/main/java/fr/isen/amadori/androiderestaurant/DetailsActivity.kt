@@ -8,8 +8,8 @@ import fr.isen.amadori.androiderestaurant.category.MenuActivity
 import fr.isen.amadori.androiderestaurant.databinding.ActivityDetailsBinding
 import fr.isen.amadori.androiderestaurant.fragments.DetailsCarouselAdapter
 import fr.isen.amadori.androiderestaurant.model.Dish
-import fr.isen.amadori.androiderestaurant.oders.Order
-import fr.isen.amadori.androiderestaurant.oders.OrderInfo
+import fr.isen.amadori.androiderestaurant.order.Order
+import fr.isen.amadori.androiderestaurant.order.OrderInfo
 import java.io.File
 
 

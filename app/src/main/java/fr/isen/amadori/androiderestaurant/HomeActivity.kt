@@ -6,6 +6,7 @@ import android.util.Log
 import android.widget.Toast
 import fr.isen.amadori.androiderestaurant.category.MenuActivity
 import fr.isen.amadori.androiderestaurant.databinding.ActivityHomeBinding
+import fr.isen.amadori.androiderestaurant.map.MapActivity
 
 private lateinit var binding: ActivityHomeBinding
 
@@ -43,6 +44,11 @@ class HomeActivity : BaseActivity() {
             val key = "Plats"
             menu.putExtra(CATEGORY,key)
             startActivity(menu)
+        }
+        binding.idMapRestaurant.setOnClickListener{
+            Toast.makeText(this, "Découvrez où nous trouver", Toast.LENGTH_SHORT).show()
+            val intent = Intent(applicationContext, MapActivity::class.java)
+            startActivity(intent)
         }
 
     }

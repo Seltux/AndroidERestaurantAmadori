@@ -14,7 +14,6 @@ import fr.isen.amadori.androiderestaurant.BaseActivity
 import fr.isen.amadori.androiderestaurant.HomeActivity
 import fr.isen.amadori.androiderestaurant.SignUpActivity
 import fr.isen.amadori.androiderestaurant.databinding.ActivityProfileBinding
-import fr.isen.amadori.androiderestaurant.oders.Order
 import org.json.JSONException
 import org.json.JSONObject
 
@@ -30,6 +29,11 @@ class ProfileActivity : BaseActivity() {
         initCreate(sharedPref)
         getOrdersHistory(sharedPref)
 
+    }
+
+    override fun onResume() {
+        invalidateOptionsMenu()
+        super.onResume()
     }
 
     private fun initCreate(sharedPref: SharedPreferences){

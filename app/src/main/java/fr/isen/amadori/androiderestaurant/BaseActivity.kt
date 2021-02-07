@@ -2,7 +2,6 @@ package fr.isen.amadori.androiderestaurant
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -10,7 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuItemCompat
-import fr.isen.amadori.androiderestaurant.oders.Order
+import fr.isen.amadori.androiderestaurant.order.Order
 import fr.isen.amadori.androiderestaurant.profile.ProfileActivity
 
 open class BaseActivity : AppCompatActivity() {

@@ -1,7 +1,6 @@
 package fr.isen.amadori.androiderestaurant
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -17,9 +16,9 @@ import com.android.volley.toolbox.Volley
 import com.google.android.material.snackbar.Snackbar
 import com.google.gson.GsonBuilder
 import fr.isen.amadori.androiderestaurant.databinding.ActivityFinalOrderBinding
-import fr.isen.amadori.androiderestaurant.oders.Order
-import fr.isen.amadori.androiderestaurant.oders.OrderAdapter
-import fr.isen.amadori.androiderestaurant.oders.SwipeToDeleteCallback
+import fr.isen.amadori.androiderestaurant.order.Order
+import fr.isen.amadori.androiderestaurant.order.OrderAdapter
+import fr.isen.amadori.androiderestaurant.order.SwipeToDeleteCallback
 import org.json.JSONException
 import org.json.JSONObject
 import java.io.File

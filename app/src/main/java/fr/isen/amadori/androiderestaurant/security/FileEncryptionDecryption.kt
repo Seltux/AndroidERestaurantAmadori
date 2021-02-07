@@ -6,10 +6,6 @@ import android.content.SharedPreferences
 import android.preference.PreferenceManager
 import android.util.Base64.*
 import android.util.Log
-import com.google.gson.GsonBuilder
-import fr.isen.amadori.androiderestaurant.model.Dish
-import fr.isen.amadori.androiderestaurant.oders.Order
-import fr.isen.amadori.androiderestaurant.oders.OrderInfo
 import java.io.*
 import java.security.SecureRandom
 import javax.crypto.Cipher

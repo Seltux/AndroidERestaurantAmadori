@@ -4,6 +4,8 @@
     package="fr.isen.amadori.androiderestaurant">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -14,28 +16,51 @@
         android:theme="@style/Theme.AndroidERestaurant"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".profile.ProfileActivity"
-            android:parentActivityName=".HomeActivity"/>
-        <activity android:name=".DeliveryActivity"
-            android:parentActivityName=".HomeActivity"/>
-        <activity android:name=".LoginActivity"
-            android:parentActivityName=".HomeActivity"/>
-        <activity android:name=".SignUpActivity"
-            android:parentActivityName=".HomeActivity"/>
+        <activity android:name=".launch.WelcomeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".map.MapActivity"
+            android:parentActivityName=".HomeActivity" />
+        <activity
+            android:name=".profile.ProfileActivity"
+            android:parentActivityName=".HomeActivity" />
+        <activity
+            android:name=".DeliveryActivity"
+            android:parentActivityName=".HomeActivity" />
+        <activity
+            android:name=".LoginActivity"
+            android:parentActivityName=".HomeActivity" />
+        <activity
+            android:name=".SignUpActivity"
+            android:parentActivityName=".HomeActivity" />
         <activity android:name=".BaseActivity" />
-        <activity android:name=".FinalOrderActivity"
-            android:parentActivityName=".HomeActivity"/>
+        <activity
+            android:name=".FinalOrderActivity"
+            android:parentActivityName=".HomeActivity" />
         <activity
             android:name=".DetailsActivity"
             android:parentActivityName=".HomeActivity" />
         <activity
             android:name=".category.MenuActivity"
             android:parentActivityName=".HomeActivity" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="apiKey" />
+
         <activity android:name=".HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
     </application>
