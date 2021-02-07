@@ -69,4 +69,6 @@
     <string name="nombre_de_commande">Nombre de commande</string>
     <string name="nom">Nom</string>
     <string name="se_d_connecter">Se déconnecter</string>
+    <string name="swiper_pour_supprimer">Swiper pour supprimer</string>
+    <string name="image_profile_utilisateur">Image profile utilisateur</string>
 </resources>

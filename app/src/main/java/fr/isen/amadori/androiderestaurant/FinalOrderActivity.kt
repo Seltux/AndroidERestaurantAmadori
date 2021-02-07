@@ -1,13 +1,16 @@
 package fr.isen.amadori.androiderestaurant
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
@@ -16,6 +19,7 @@ import com.google.gson.GsonBuilder
 import fr.isen.amadori.androiderestaurant.databinding.ActivityFinalOrderBinding
 import fr.isen.amadori.androiderestaurant.oders.Order
 import fr.isen.amadori.androiderestaurant.oders.OrderAdapter
+import fr.isen.amadori.androiderestaurant.oders.SwipeToDeleteCallback
 import org.json.JSONException
 import org.json.JSONObject
 import java.io.File
@@ -29,7 +33,7 @@ class FinalOrderActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityFinalOrderBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        readFileJsonThread()
         binding.idVotrePanier.text = "Votre Panier :"
         binding.idCategoryLoaderPanier.isVisible = false
         binding.animationView.isVisible = false
@@ -41,12 +45,30 @@ class FinalOrderActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         }
-        readFileJsonThread()
+        delete()
+        invalidateOptionsMenu()
     }
 
     @SuppressLint("ResourceType")
     private fun deliveryWaitingAnimation(){
         binding.animationView.playAnimation()
+    }
+
+    private fun delete(){
+        val swipeToDelete = object: SwipeToDeleteCallback(this){
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val myAdapter = binding.idListPanier.adapter as OrderAdapter
+                myAdapter.deleteOrder(viewHolder.adapterPosition)
+                val file_name = File(cacheDir.absolutePath + "Basket.json")
+                if(file_name.exists()){
+                    val orders = Order(myAdapter.getOrders())
+                    file_name.writeText(GsonBuilder().setPrettyPrinting().create().toJson(orders))
+                    updateQuantityBasket(orders)
+                }
+            }
+        }
+        val itemTouchHelper = ItemTouchHelper(swipeToDelete)
+        itemTouchHelper.attachToRecyclerView(binding.idListPanier)
     }
 
     private fun animationThread(){
@@ -82,24 +104,10 @@ class FinalOrderActivity : AppCompatActivity() {
         if (file_name.exists()) {
             val order = gson.fromJson(file_name.readText(), Order::class.java)
             val recyclerView = binding.idListPanier
-           recyclerView.adapter = OrderAdapter(order.orders, binding.idButtonPayOrder) {
-                order.orders.remove(it)
-                deleteOrder(order)
-            }
+            recyclerView.adapter = OrderAdapter(order.orders,binding.idButtonPayOrder)
             recyclerView.layoutManager = LinearLayoutManager(this)
             recyclerView.isVisible = true
         }
-    }
-
-    fun deleteOrder(order: Order) {
-        val file_name = File(cacheDir.absolutePath + "Basket.json")
-        memorySave(order, file_name)
-    }
-
-   private fun memorySave(order: Order, file_name: File) {
-        updateQuantityBasket(order)
-        file_name.writeText(GsonBuilder().create().toJson(order))
-
     }
 
     fun updateQuantityBasket(order: Order) {

@@ -14,12 +14,17 @@
         android:theme="@style/Theme.AndroidERestaurant"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".profile.ProfileActivity"></activity>
-        <activity android:name=".DeliveryActivity"></activity>
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".SignUpActivity" />
+        <activity android:name=".profile.ProfileActivity"
+            android:parentActivityName=".HomeActivity"/>
+        <activity android:name=".DeliveryActivity"
+            android:parentActivityName=".HomeActivity"/>
+        <activity android:name=".LoginActivity"
+            android:parentActivityName=".HomeActivity"/>
+        <activity android:name=".SignUpActivity"
+            android:parentActivityName=".HomeActivity"/>
         <activity android:name=".BaseActivity" />
-        <activity android:name=".FinalOrderActivity" />
+        <activity android:name=".FinalOrderActivity"
+            android:parentActivityName=".HomeActivity"/>
         <activity
             android:name=".DetailsActivity"
             android:parentActivityName=".HomeActivity" />

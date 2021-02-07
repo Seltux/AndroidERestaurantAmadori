@@ -41,7 +41,7 @@
         android:layout_width="33dp"
         android:layout_height="33dp"
         android:layout_marginStart="16dp"
-        android:contentDescription="Image profile utilisateur"
+        android:contentDescription="@string/image_profile_utilisateur"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

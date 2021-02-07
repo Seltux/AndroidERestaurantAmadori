@@ -35,7 +35,6 @@ open class BaseActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-
         order?.findViewById<ImageView>(R.id.idProfile)?.setOnClickListener {
             if (sharedPref.contains(SignUpActivity.ID_USER)) {
                 val intent = Intent(this, ProfileActivity::class.java)

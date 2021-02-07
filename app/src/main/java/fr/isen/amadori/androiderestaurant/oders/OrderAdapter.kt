@@ -1,6 +1,7 @@
 package fr.isen.amadori.androiderestaurant.oders
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Button
@@ -8,11 +9,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import fr.isen.amadori.androiderestaurant.R
 import fr.isen.amadori.androiderestaurant.databinding.OrderItemBinding
+import java.io.File
 
 class OrderAdapter(
     private val orders: MutableList<OrderInfo>,
-    private val buttonToFinaliseOrder: Button,
-    private val deleteOrderClickListener: (OrderInfo) -> Unit
+    private val buttonToFinaliseOrder: Button
 
 ) : RecyclerView.Adapter<OrderAdapter.OrderHolder>() {
 
@@ -46,31 +47,29 @@ class OrderAdapter(
         } else {
             Picasso.get().load(R.drawable.jokes_about_italians).into(holder.image_repas)
         }
-        holder.delete.setOnClickListener {
-            deleteOrder(position)
-            deleteOrderClickListener.invoke(orders[position])
-            buttonToFinaliseOrder.text = "Payer :" + getPriceTotalOrder(Order(orders)).toString() + "€"
-            notifyDataSetChanged()
-        }
     }
 
-    override fun getItemCount() = orders.size
+    override fun getItemCount(): Int {
+        return orders.size
+    }
 
-    fun getPriceTotalOrder(order: Order): Double{
+     fun getOrders() = orders
+
+    fun getPriceTotalOrder(order: Order): Double {
         var total: Double = 0.0
-        for (i in order.orders){
-            total += (i.dish.getPrice()*i.quantity)
+        for (i in order.orders) {
+            total += (i.dish.getPrice() * i.quantity)
         }
         return total
     }
 
+    @SuppressLint("SetTextI18n")
     fun deleteOrder(position: Int) {
-        if (orders[position].quantity != 1) {
-            orders[position].quantity--
-        } else {
-            orders.removeAt(position)
-            notifyItemRemoved(position)
-        }
+        orders.removeAt(position)
+        notifyItemRemoved(position)
+        notifyDataSetChanged()
+        buttonToFinaliseOrder.text =
+            "Payer :" + getPriceTotalOrder(Order(orders)).toString() + "€"
     }
 }
 
