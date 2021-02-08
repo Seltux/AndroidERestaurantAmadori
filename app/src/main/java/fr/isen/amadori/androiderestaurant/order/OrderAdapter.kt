@@ -69,5 +69,6 @@ class OrderAdapter(
         buttonToFinaliseOrder.text =
             "Payer :" + getPriceTotalOrder(Order(orders)).toString() + "€"
     }
+
 }
 

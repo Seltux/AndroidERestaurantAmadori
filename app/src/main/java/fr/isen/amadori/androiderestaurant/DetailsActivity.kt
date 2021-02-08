@@ -1,7 +1,9 @@
 package fr.isen.amadori.androiderestaurant
 
 import android.annotation.SuppressLint
+import android.os.Build
 import android.os.Bundle
+import androidx.annotation.RequiresApi
 import com.google.android.material.snackbar.Snackbar
 import com.google.gson.GsonBuilder
 import fr.isen.amadori.androiderestaurant.category.MenuActivity
@@ -10,7 +12,10 @@ import fr.isen.amadori.androiderestaurant.fragments.DetailsCarouselAdapter
 import fr.isen.amadori.androiderestaurant.model.Dish
 import fr.isen.amadori.androiderestaurant.order.Order
 import fr.isen.amadori.androiderestaurant.order.OrderInfo
+import fr.isen.amadori.androiderestaurant.security.decrypt
+import fr.isen.amadori.androiderestaurant.security.encrypt
 import java.io.File
+import java.nio.charset.StandardCharsets
 
 
 private lateinit var binding: ActivityDetailsBinding
@@ -83,6 +88,7 @@ class DetailsActivity : BaseActivity() {
         binding.idPriceRepasDetails.text = "Total :" + dishInfo.getFormattedPrice()
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     fun jsonOrderFile(dishInfo: Dish, quantity: Int) {
         val file_name = File(cacheDir.absolutePath + "Basket.json")
         val gson = GsonBuilder().setPrettyPrinting().create()

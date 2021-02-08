@@ -103,7 +103,7 @@ class FinalOrderActivity : AppCompatActivity() {
         if (file_name.exists()) {
             val order = gson.fromJson(file_name.readText(), Order::class.java)
             val recyclerView = binding.idListPanier
-            recyclerView.adapter = OrderAdapter(order.orders,binding.idButtonPayOrder)
+            recyclerView.adapter = OrderAdapter(order.orders, binding.idButtonPayOrder)
             recyclerView.layoutManager = LinearLayoutManager(this)
             recyclerView.isVisible = true
         }
@@ -145,6 +145,7 @@ class FinalOrderActivity : AppCompatActivity() {
                 "Commande passée :)",
                 Snackbar.LENGTH_SHORT
             ).show()
+            file_name.delete()
             val intent = Intent(this, DeliveryActivity::class.java)
             startActivity(intent)
         },
