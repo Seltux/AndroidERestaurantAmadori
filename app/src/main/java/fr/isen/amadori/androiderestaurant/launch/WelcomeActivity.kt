@@ -23,7 +23,7 @@ class WelcomeActivity : AppCompatActivity() {
 
         binding.idBienvenu.apply {
             alpha = 0f
-            animate().alpha(1f).setListener(object : AnimatorListenerAdapter() {
+            animate().alpha(1f).setDuration(10000).setListener(object : AnimatorListenerAdapter() {
                 override fun onAnimationEnd(animation: Animator?) {
                     finish()
                     val intent = Intent(applicationContext, HomeActivity::class.java)
@@ -33,11 +33,11 @@ class WelcomeActivity : AppCompatActivity() {
         }
         binding.serveurAnimation.apply {
             alpha = 0f
-            animate().alpha(1f).setListener(null)
+            animate().alpha(1f).setDuration(10000).setListener(null)
         }
         binding.imageView.apply {
             alpha = 0f
-            animate().alpha(1f).setListener(null)
+            animate().alpha(1f).setDuration(10000).setListener(null)
         }
     }
 }

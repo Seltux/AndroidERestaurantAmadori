@@ -32,13 +32,14 @@ class FinalOrderActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityFinalOrderBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        readFileJsonThread()
+        readFileJson()
         binding.idVotrePanier.text = "Votre Panier :"
         binding.idCategoryLoaderPanier.isVisible = false
         binding.animationView.isVisible = false
         binding.idButtonPayOrder.setOnClickListener {
             if(getSharedPreferences(BaseActivity.PREF_SHARED, MODE_PRIVATE).contains(SignUpActivity.ID_USER)) {
-               animationThread()
+                sendFinalOrder()
+                deliveryWaitingAnimation()
             }else {
                 val intent = Intent(this, SignUpActivity::class.java)
                 startActivity(intent)
@@ -70,32 +71,6 @@ class FinalOrderActivity : AppCompatActivity() {
         itemTouchHelper.attachToRecyclerView(binding.idListPanier)
     }
 
-    private fun animationThread(){
-        object : Thread() {
-            override fun run() {
-                try {
-                    // code runs in a thread
-                    runOnUiThread {  sendFinalOrder()
-                        deliveryWaitingAnimation() }
-                } catch (ex: Exception) {
-                    Log.i("---", "Exception in thread")
-                }
-            }
-        }.start()
-    }
-
-    private fun readFileJsonThread(){
-        object : Thread() {
-            override fun run() {
-                try {
-                    // code runs in a thread
-                    runOnUiThread {  readFileJson() }
-                } catch (ex: Exception) {
-                    Log.i("---", "Exception in thread")
-                }
-            }
-        }.start()
-    }
 
     private fun readFileJson() {
         val gson = GsonBuilder().setPrettyPrinting().create()
@@ -113,6 +88,13 @@ class FinalOrderActivity : AppCompatActivity() {
         val quantity = order.orders.sumOf { it.quantity }
         val sharedPref = getSharedPreferences(BaseActivity.PREF_SHARED, MODE_PRIVATE)
         sharedPref.edit().putInt(BaseActivity.ORDER_COUNT, quantity).apply()
+    }
+
+    private fun deleteFileJson(){
+        val prefShared = getSharedPreferences(BaseActivity.PREF_SHARED, MODE_PRIVATE)
+        prefShared.edit().putInt(BaseActivity.ORDER_COUNT,0).apply()
+        val file_name = File(cacheDir.absolutePath + "Basket.json")
+        file_name.delete()
     }
 
     private fun sendFinalOrder(){
@@ -145,7 +127,8 @@ class FinalOrderActivity : AppCompatActivity() {
                 "Commande passée :)",
                 Snackbar.LENGTH_SHORT
             ).show()
-            file_name.delete()
+            deleteFileJson()
+
             val intent = Intent(this, DeliveryActivity::class.java)
             startActivity(intent)
         },

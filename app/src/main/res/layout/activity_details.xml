@@ -56,39 +56,19 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
-        android:fontFamily="@font/italianno"
+        android:fontFamily="cursive"
         android:text="@string/ingredients_du_plat"
         android:textColor="#000000"
-        android:textSize="24sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/idNomRepasDetails" />
-
-    <Button
-        android:id="@+id/idPriceRepasDetails"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="8dp"
-        android:backgroundTint="@color/green_italie_2"
-        android:elevation="15dp"
-        android:fontFamily="@font/italiana2"
-        android:text="@string/prix_details"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idIngredientsRepasDetails" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/idFloatButtonPlus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="112dp"
+        android:layout_marginBottom="8dp"
         android:clickable="true"
         android:contentDescription="@string/plus_button"
         android:focusable="true"
@@ -97,15 +77,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.36"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idIngredientsRepasDetails"
-        app:layout_constraintVertical_bias="0.627"
         app:srcCompat="@drawable/ic_plus_24" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/idFloatButtonMinus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="112dp"
+        android:layout_marginBottom="8dp"
         android:clickable="true"
         android:contentDescription="@string/minus_button"
         android:focusable="true"
@@ -114,8 +92,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.707"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idIngredientsRepasDetails"
-        app:layout_constraintVertical_bias="0.627"
         app:srcCompat="@drawable/ic_minus_24" />
 
     <TextView
@@ -124,16 +100,31 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="24dp"
         android:inputType="number"
         android:text="@string/quantity_1"
         app:layout_constraintBottom_toTopOf="@+id/idPriceRepasDetails"
         app:layout_constraintEnd_toStartOf="@+id/idFloatButtonMinus"
         app:layout_constraintHorizontal_bias="0.692"
         app:layout_constraintStart_toEndOf="@+id/idFloatButtonPlus"
-        app:layout_constraintTop_toBottomOf="@+id/idIngredientsRepasDetails"
-        app:layout_constraintVertical_bias="0.81"
         tools:ignore="TextViewEdits" />
 
+    <Button
+        android:id="@+id/idPriceRepasDetails"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:backgroundTint="@color/green_italie_2"
+        android:fontFamily="@font/italiana2"
+        android:text="@string/prix_details"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

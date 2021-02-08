@@ -44,41 +44,25 @@
         android:fontFamily="@font/italianno"
         android:text="@string/nom"
         android:textColor="#000000"
-        android:textSize="18sp"
+        android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/circularImageView"
         app:layout_constraintTop_toBottomOf="@+id/idProfileUserTitle" />
-
-    <TextView
-        android:id="@+id/idOrderNumberProfile"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/italianno"
-        android:text="@string/nombre_de_commande"
-        android:textColor="#000000"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/circularImageView"
-        app:layout_constraintTop_toBottomOf="@+id/idNomProfile" />
 
     <Button
         android:id="@+id/idLogoutProfile"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
         android:backgroundTint="@color/green_italie_2"
         android:text="@string/se_d_connecter"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/circularImageView"
-        app:layout_constraintTop_toBottomOf="@+id/idOrderNumberProfile" />
+        app:layout_constraintTop_toBottomOf="@+id/idNomProfile" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/idOrderHistory"

@@ -3,13 +3,16 @@ package fr.isen.amadori.androiderestaurant.profile
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import fr.isen.amadori.androiderestaurant.databinding.HistoryOrderBinding
 import fr.isen.amadori.androiderestaurant.order.Order
+import java.lang.StringBuilder
 
 class ProfileAdapter(
-    private val history: List<History>
+    private val history: List<History>,
+    private val sender: TextView
 ): RecyclerView.Adapter<ProfileAdapter.ProfileHolder>() {
 
     class ProfileHolder(binding: HistoryOrderBinding): RecyclerView.ViewHolder(binding.root){
@@ -17,6 +20,7 @@ class ProfileAdapter(
         val prixTotal = binding.idPrixTotalItem
         val totalQuantity = binding.idNombreItem
         val date = binding.idDateHistory
+        val recap = binding.idAllDishes
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProfileHolder {
@@ -30,10 +34,15 @@ class ProfileAdapter(
         val result = Gson().fromJson(history[position].history, Order::class.java)
         var prix = 0.0
         var quan = 0
-        for (orders in result.orders) {
+        val temp = result.orders
+        sender.text = "Nom: " + history[position].sender
+        val prettyDescription = StringBuilder("")
+        for (orders in temp) {
+            prettyDescription.append("\uD83D\uDFE2 " + orders.dish.title + "\n")
             prix += orders.dish.getPrice()*orders.quantity
             quan +=  orders.quantity
         }
+        holder.recap.text = prettyDescription.toString()
         holder.date.text = history[position].date
         holder.prixTotal.text = prix.toString()
         holder.totalQuantity.text = "x" + quan.toString()

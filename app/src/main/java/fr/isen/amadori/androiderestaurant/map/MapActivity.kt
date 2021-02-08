@@ -1,4 +1,6 @@
 package fr.isen.amadori.androiderestaurant.map
+import android.content.Intent
+import android.net.Uri
 import com.google.android.gms.maps.GoogleMap
 import android.os.Bundle
 import android.widget.Toast
@@ -23,6 +25,12 @@ class MapActivity : BaseActivity(), OnMapReadyCallback {
         }
        val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as? SupportMapFragment
         mapFragment?.getMapAsync(this)
+
+        binding.buttonTempo.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.setData(Uri.parse("https://www.google.com/maps?q=google+map+ISEN+TOULON&um=1&ie=UTF-8&sa=X&ved=2ahUKEwi5ycDAstvuAhUyyYUKHQ2nCZMQ_AUoAXoECAgQAw"))
+            startActivity(intent)
+        }
     }
 
     override fun onMapReady(p0: GoogleMap?) {

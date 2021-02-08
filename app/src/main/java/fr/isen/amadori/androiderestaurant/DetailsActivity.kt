@@ -3,6 +3,7 @@ package fr.isen.amadori.androiderestaurant
 import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.google.android.material.snackbar.Snackbar
 import com.google.gson.GsonBuilder
@@ -15,6 +16,7 @@ import fr.isen.amadori.androiderestaurant.order.OrderInfo
 import fr.isen.amadori.androiderestaurant.security.decrypt
 import fr.isen.amadori.androiderestaurant.security.encrypt
 import java.io.File
+import java.lang.StringBuilder
 import java.nio.charset.StandardCharsets
 
 
@@ -56,10 +58,10 @@ class DetailsActivity : BaseActivity() {
     fun displaySnackBarAndJson(binding: ActivityDetailsBinding, dishInfo: Dish) {
         binding.idPagerVeiw.adapter = DetailsCarouselAdapter(this, dishInfo.images)
         binding.idPriceRepasDetails.setOnClickListener {
-            Snackbar.make(
-                binding.root,
+            Toast.makeText(
+                this,
                 quantity.toString() + "x " + dishInfo.title + " Ajouté au panier",
-                Snackbar.LENGTH_SHORT
+                Toast.LENGTH_SHORT
             ).show()
             jsonOrderFile(dishInfo, quantity)
 
@@ -83,12 +85,17 @@ class DetailsActivity : BaseActivity() {
 
     @SuppressLint("SetTextI18n")
     fun getInfoAboutDish(binding: ActivityDetailsBinding, dishInfo: Dish) {
-        binding.idIngredientsRepasDetails.text = dishInfo.getIngredients()
+        val temp = dishInfo.ingredients
+        val prettyDescription = StringBuilder("")
+        for(description in temp){
+            prettyDescription.append("\uD83D\uDFE2 " + description.ingredient_name + "\n")
+        }
+        binding.idIngredientsRepasDetails.text = prettyDescription.toString()
         binding.idNomRepasDetails.text = dishInfo.title
         binding.idPriceRepasDetails.text = "Total :" + dishInfo.getFormattedPrice()
     }
 
-    @RequiresApi(Build.VERSION_CODES.M)
+
     fun jsonOrderFile(dishInfo: Dish, quantity: Int) {
         val file_name = File(cacheDir.absolutePath + "Basket.json")
         val gson = GsonBuilder().setPrettyPrinting().create()

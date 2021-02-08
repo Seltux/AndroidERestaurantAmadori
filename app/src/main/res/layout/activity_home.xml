@@ -3,71 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="#FFFFFF"
     android:backgroundTint="#FFFFFF"
     tools:context=".HomeActivity">
 
 
-    <Button
-        android:id="@+id/idButtonEntree"
-        android:layout_width="150dp"
-        android:layout_height="30dp"
-        android:background="@color/green_italie"
-        android:elevation="10dp"
-        android:text="@string/entrees"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.505"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.582" />
-
-    <Button
-        android:id="@+id/idButtonPlats"
-        android:layout_width="150dp"
-        android:layout_height="30dp"
-        android:background="@color/white_italie"
-        android:elevation="10dp"
-        android:text="@string/plats"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.505"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idButtonEntree"
-        app:layout_constraintVertical_bias="0.106" />
-
-    <Button
-        android:id="@+id/idButtonDesserts"
-        android:layout_width="150dp"
-        android:layout_height="30dp"
-        android:layout_marginBottom="160dp"
-        android:background="@color/green_italie_2"
-        android:elevation="10dp"
-        android:text="@string/desserts"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.505"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idButtonPlats"
-        app:layout_constraintVertical_bias="0.8" />
-
     <ImageView
         android:id="@+id/idLogoRestaurantItalien"
-        android:layout_width="220dp"
+        android:layout_width="0dp"
         android:layout_height="188dp"
         android:layout_marginTop="4dp"
         android:contentDescription="@string/logo_page_accueil_application"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/idGuideMichelin"
         app:srcCompat="@drawable/logo_restaurant2" />
 
     <TextView
         android:id="@+id/idSloganRestaurant"
-        android:layout_width="307dp"
-        android:layout_height="33dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:fontFamily="@font/italiana2"
         android:gravity="center"
         android:text="@string/qualit_e_know_how_italiano"
@@ -84,7 +40,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="16dp"
         android:elevation="10dp"
         android:fontFamily="@font/italianno"
         android:text="@string/via_bonifacio_viii_14_00165_roma_rm_italie"
@@ -92,7 +47,6 @@
         android:textColor="#000000"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
@@ -100,8 +54,8 @@
 
     <ImageView
         android:id="@+id/idGuideMichelin"
-        android:layout_width="297dp"
-        android:layout_height="97dp"
+        android:layout_width="212dp"
+        android:layout_height="49dp"
         android:layout_marginTop="8dp"
         android:contentDescription="@string/guide_michelin"
         app:layout_constraintEnd_toEndOf="parent"
@@ -111,7 +65,7 @@
 
     <ImageView
         android:id="@+id/idPizzaImage"
-        android:layout_width="332dp"
+        android:layout_width="0dp"
         android:layout_height="334dp"
         android:layout_marginTop="4dp"
         android:contentDescription="@string/image_de_pizza"
@@ -122,13 +76,56 @@
         app:srcCompat="@drawable/pizza" />
 
     <Button
+        android:id="@+id/idButtonEntree"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="130dp"
+        android:background="@color/green_italie"
+        android:elevation="10dp"
+        android:text="@string/entrees"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idSloganRestaurant" />
+
+    <Button
+        android:id="@+id/idButtonPlats"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="130dp"
+        android:background="@color/white_italie"
+        android:elevation="10dp"
+        android:text="@string/plats"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idButtonEntree" />
+
+    <Button
+        android:id="@+id/idButtonDesserts"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="130dp"
+        android:background="@color/green_italie_2"
+        android:elevation="10dp"
+        android:text="@string/desserts"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idButtonPlats" />
+
+    <Button
         android:id="@+id/idMapRestaurant"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="130dp"
         android:backgroundTint="#FFC107"
         android:text="@string/le_restaurant"
-        app:layout_constraintBottom_toBottomOf="@+id/idPizzaImage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/idButtonDesserts" />

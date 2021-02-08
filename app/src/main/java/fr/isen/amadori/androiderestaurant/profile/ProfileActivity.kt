@@ -64,10 +64,11 @@ class ProfileActivity : BaseActivity() {
             { response ->
                 val gson = Gson().fromJson(response.toString(), HistoryList::class.java)
                 gson.list?.let {
-                    binding.idOrderHistory.adapter = ProfileAdapter(it)
+                    binding.idOrderHistory.adapter = ProfileAdapter(it, binding.idNomProfile)
                     binding.idCategoryLoaderHistory.isVisible = false
                     binding.idOrderHistory.layoutManager =LinearLayoutManager(this)
                     binding.idOrderHistory.isVisible = true
+
                 }
 
             },

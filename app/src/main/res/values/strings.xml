@@ -77,4 +77,21 @@
     <string name="bienvenue">Bienvenu</string>
     <string name="bienvenu">Bienvenue</string>
     <string name="benvenuto">Benvenuto</string>
+    <string name="login">Login</string>
+    <string name="plats_profile">Plats :</string>
+    <string name="merci_pour_votre_commande_bient_t">Merci pour votre commande, à bientôt</string>
+    <string name="votre_commande_est_en_cours_de_livraison">Votre commande est en cours de livraison</string>
+    <string name="mon_compte">Mon compte</string>
+    <string name="inscription">Inscription</string>
+    <string name="politique_r_glement"><![CDATA[Politique & Règlement]]></string>
+    <string name="pr_nom">Prénom</string>
+    <string name="adresse">Adresse</string>
+    <string name="mot_de_passe">Mot de passe</string>
+    <string name="mot_de_passe_confirmation">Mot de passe confirmation</string>
+    <string name="s_inscrire">S\'inscrire</string>
+    <string name="enregistrement">Enregistrement</string>
+    <string name="connexion">Connexion</string>
+    <string name="se_connecter">Se connecter</string>
+    <string name="google_map_api_tant_payant_maintenant_google_a_refus_ma_carte_il_ne_manque_qu_une_cl_pour_pouvoir_voir_sinon_a_marche_du_coup_cliqu_sur_le_lien_ci_dessous_pour_avoir_un_petit_apper_u">Google map API étant payant maintenant, google a refusé ma carte. Il ne manque qu\'une clé pour pouvoir voir sinon ça marche :) (Du coup cliqué sur le lien ci-dessous pour avoir un petit apperçu)</string>
+    <string name="solution_temporaire">Solution Temporaire</string>
 </resources>
