@@ -8,7 +8,7 @@
     <string name="créé_par_des_professionnels">créé par des professionnels</string>
     <string name="nos_plats">Nos Plats</string>
     <string name="i_nostri_piatti">I nostri piatti</string>
-    <string name="image_du_repas_correspondant_la_description">Image du repas correspondant à la description</string>
+    <string name="image_du_repas_correspondant_la_description">Image du repas correspondent à la description</string>
     <string name="nom_repas">Nom Repas</string>
     <string name="descriptionrepas">DescriptionRepas</string>
     <string name="prixrepas">PrixRepas</string>
@@ -95,4 +95,5 @@
     <string name="solution_temporaire">Solution Temporaire</string>
     <string name="title_activity_maps">Map</string>
     <string name="la_google_map_n_affiche_rien_tr_s_probalement_cause_de_la_version_android_ou_du_manque_d_un_module_sdk_si_c_est_le_cas_pour_vous_ne_vous_en_faites_pas_cliquez_su_le_boutton_ci_dessous">La google map n\'affiche rien très probalement à cause de la version Android ou du manque d\'un module SDK. Si c\'est le cas pour vous, ne vous en faites pas ! Cliquez su le boutton ci-dessous :)</string>
+    <string name="restaurant">restaurant</string>
 </resources>
