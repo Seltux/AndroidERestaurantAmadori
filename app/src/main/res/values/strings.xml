@@ -71,7 +71,6 @@
     <string name="se_d_connecter">Se déconnecter</string>
     <string name="swiper_pour_supprimer">Swiper pour supprimer</string>
     <string name="image_profile_utilisateur">Image profile utilisateur</string>
-    <string name="maps_api_key" />
     <string name="le_restaurant">LE RESTAURANT</string>
     <string name="welcome">welcome</string>
     <string name="bienvenue">Bienvenu</string>
@@ -94,4 +93,6 @@
     <string name="se_connecter">Se connecter</string>
     <string name="google_map_api_tant_payant_maintenant_google_a_refus_ma_carte_il_ne_manque_qu_une_cl_pour_pouvoir_voir_sinon_a_marche_du_coup_cliqu_sur_le_lien_ci_dessous_pour_avoir_un_petit_apper_u">Google map API étant payant maintenant, google a refusé ma carte. Il ne manque qu\'une clé pour pouvoir voir sinon ça marche :) (Du coup cliqué sur le lien ci-dessous pour avoir un petit apperçu)</string>
     <string name="solution_temporaire">Solution Temporaire</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="la_google_map_n_affiche_rien_tr_s_probalement_cause_de_la_version_android_ou_du_manque_d_un_module_sdk_si_c_est_le_cas_pour_vous_ne_vous_en_faites_pas_cliquez_su_le_boutton_ci_dessous">La google map n\'affiche rien très probalement à cause de la version Android ou du manque d\'un module SDK. Si c\'est le cas pour vous, ne vous en faites pas ! Cliquez su le boutton ci-dessous :)</string>
 </resources>

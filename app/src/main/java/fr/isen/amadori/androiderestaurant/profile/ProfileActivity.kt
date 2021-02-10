@@ -42,6 +42,7 @@ class ProfileActivity : BaseActivity() {
             val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
         }
+        binding.idNomProfile.text = getSharedPreferences(PREF_SHARED, MODE_PRIVATE).getString(SignUpActivity.NAME_USER,"")
 
     }
 
@@ -64,7 +65,7 @@ class ProfileActivity : BaseActivity() {
             { response ->
                 val gson = Gson().fromJson(response.toString(), HistoryList::class.java)
                 gson.list?.let {
-                    binding.idOrderHistory.adapter = ProfileAdapter(it, binding.idNomProfile)
+                    binding.idOrderHistory.adapter = ProfileAdapter(it)
                     binding.idCategoryLoaderHistory.isVisible = false
                     binding.idOrderHistory.layoutManager =LinearLayoutManager(this)
                     binding.idOrderHistory.isVisible = true

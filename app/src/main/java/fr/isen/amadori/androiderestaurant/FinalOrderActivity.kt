@@ -19,6 +19,8 @@ import fr.isen.amadori.androiderestaurant.databinding.ActivityFinalOrderBinding
 import fr.isen.amadori.androiderestaurant.order.Order
 import fr.isen.amadori.androiderestaurant.order.OrderAdapter
 import fr.isen.amadori.androiderestaurant.order.SwipeToDeleteCallback
+import fr.isen.amadori.androiderestaurant.security.decrypt
+import fr.isen.amadori.androiderestaurant.security.encrypt
 import org.json.JSONException
 import org.json.JSONObject
 import java.io.File
@@ -27,6 +29,9 @@ import java.io.File
 private lateinit var binding: ActivityFinalOrderBinding
 
 class FinalOrderActivity : AppCompatActivity() {
+
+   private var int: Int = 0
+
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,10 +42,17 @@ class FinalOrderActivity : AppCompatActivity() {
         binding.idCategoryLoaderPanier.isVisible = false
         binding.animationView.isVisible = false
         binding.idButtonPayOrder.setOnClickListener {
-            if(getSharedPreferences(BaseActivity.PREF_SHARED, MODE_PRIVATE).contains(SignUpActivity.ID_USER)) {
+            int = getSharedPreferences(BaseActivity.PREF_SHARED, MODE_PRIVATE).getInt(BaseActivity.ORDER_COUNT,0)
+            if(getSharedPreferences(BaseActivity.PREF_SHARED, MODE_PRIVATE).contains(SignUpActivity.ID_USER) && int !=0) {
                 sendFinalOrder()
                 deliveryWaitingAnimation()
-            }else {
+            }else if(int == 0 && getSharedPreferences(BaseActivity.PREF_SHARED, MODE_PRIVATE).contains(SignUpActivity.ID_USER)) {
+                val intent = Intent(this, HomeActivity::class.java)
+                startActivity(intent)
+            }else if (int == 0 && !getSharedPreferences(BaseActivity.PREF_SHARED, MODE_PRIVATE).contains(SignUpActivity.ID_USER) ){
+                val intent = Intent(this, HomeActivity::class.java)
+                startActivity(intent)
+            }else{
                 val intent = Intent(this, SignUpActivity::class.java)
                 startActivity(intent)
             }
@@ -62,7 +74,7 @@ class FinalOrderActivity : AppCompatActivity() {
                 val file_name = File(cacheDir.absolutePath + "Basket.json")
                 if(file_name.exists()){
                     val orders = Order(myAdapter.getOrders())
-                    file_name.writeText(GsonBuilder().setPrettyPrinting().create().toJson(orders))
+                    file_name.writeText(encrypt(GsonBuilder().setPrettyPrinting().create().toJson(orders),applicationContext))
                     updateQuantityBasket(orders)
                 }
             }
@@ -76,7 +88,7 @@ class FinalOrderActivity : AppCompatActivity() {
         val gson = GsonBuilder().setPrettyPrinting().create()
         val file_name = File(cacheDir.absolutePath + "Basket.json")
         if (file_name.exists()) {
-            val order = gson.fromJson(file_name.readText(), Order::class.java)
+            val order = gson.fromJson(decrypt(file_name.readText(),this), Order::class.java)
             val recyclerView = binding.idListPanier
             recyclerView.adapter = OrderAdapter(order.orders, binding.idButtonPayOrder)
             recyclerView.layoutManager = LinearLayoutManager(this)
@@ -109,7 +121,7 @@ class FinalOrderActivity : AppCompatActivity() {
         val file_name = File(cacheDir.absolutePath + "Basket.json")
         if (file_name.exists()) {
              order = GsonBuilder().setPrettyPrinting().create().fromJson(
-                 file_name.readText(),
+                 decrypt(file_name.readText(),this),
                  Order::class.java
              )
         }

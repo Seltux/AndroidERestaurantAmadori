@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".map.MapActivity">
+    tools:context=".MapsActivity">
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/map"
@@ -14,7 +14,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:context="com.example.mapwithmarker.MapsMarkerActivity" />
+        tools:context=".MapsActivity" />
 
     <TextView
         android:id="@+id/textWarning"
@@ -23,7 +23,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:text="@string/google_map_api_tant_payant_maintenant_google_a_refus_ma_carte_il_ne_manque_qu_une_cl_pour_pouvoir_voir_sinon_a_marche_du_coup_cliqu_sur_le_lien_ci_dessous_pour_avoir_un_petit_apper_u"
+        android:text="@string/la_google_map_n_affiche_rien_tr_s_probalement_cause_de_la_version_android_ou_du_manque_d_un_module_sdk_si_c_est_le_cas_pour_vous_ne_vous_en_faites_pas_cliquez_su_le_boutton_ci_dessous"
         android:textAlignment="center"
         android:textColor="#F10000"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,6 +43,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textWarning" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
+

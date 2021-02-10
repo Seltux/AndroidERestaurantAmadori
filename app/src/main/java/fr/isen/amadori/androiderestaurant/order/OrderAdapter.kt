@@ -11,7 +11,7 @@ import fr.isen.amadori.androiderestaurant.databinding.OrderItemBinding
 
 class OrderAdapter(
     private val orders: MutableList<OrderInfo>,
-    private val buttonToFinaliseOrder: Button
+    private val buttonToFinaliseOrder: Button,
 
 ) : RecyclerView.Adapter<OrderAdapter.OrderHolder>() {
 
@@ -21,7 +21,6 @@ class OrderAdapter(
         val title = binding.idNomRepas
         val prixTotal = binding.idPrixTotalItem
         val totalQuantity = binding.idNombreItem
-        val delete = binding.idDeleteItem
         val image_repas = binding.idImageRepas
     }
 
@@ -54,7 +53,7 @@ class OrderAdapter(
      fun getOrders() = orders
 
     fun getPriceTotalOrder(order: Order): Double {
-        var total: Double = 0.0
+        var total = 0.0
         for (i in order.orders) {
             total += (i.dish.getPrice() * i.quantity)
         }

@@ -16,10 +16,4 @@ data class Dish(
     }else{
         null
     }
-    fun getAllImages() = if (images.isNotEmpty() && images.any{it.isNotEmpty()}){
-        images.filter { it.isNotEmpty() }
-    }else{
-        null
-    }
-    fun getIngredients() : String = ingredients.map{it.ingredient_name}.joinToString ( "," )
 }

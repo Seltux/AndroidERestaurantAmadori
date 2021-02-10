@@ -6,7 +6,6 @@ import android.util.Log
 import android.widget.Toast
 import fr.isen.amadori.androiderestaurant.category.MenuActivity
 import fr.isen.amadori.androiderestaurant.databinding.ActivityHomeBinding
-import fr.isen.amadori.androiderestaurant.map.MapActivity
 
 private lateinit var binding: ActivityHomeBinding
 
@@ -18,12 +17,10 @@ class HomeActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //Affichage d'un log lors de onCreate()
         Log.i(TAG, "onCreate() Called")
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //Toast & Redirection
         binding.idButtonEntree.setOnClickListener {
             Toast.makeText(this, "Vous avez choisis nos Entrées", Toast.LENGTH_SHORT).show()
             val menu = Intent(applicationContext, MenuActivity::class.java)
@@ -47,7 +44,7 @@ class HomeActivity : BaseActivity() {
         }
         binding.idMapRestaurant.setOnClickListener{
             Toast.makeText(this, "Découvrez où nous trouver", Toast.LENGTH_SHORT).show()
-            val intent = Intent(applicationContext, MapActivity::class.java)
+            val intent = Intent(this, MapsActivity::class.java)
             startActivity(intent)
         }
 
@@ -60,7 +57,6 @@ class HomeActivity : BaseActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        //Affichage d'un log lors de "onDestroy()"
         Log.i(TAG,"onDestroy() Called")
     }
 

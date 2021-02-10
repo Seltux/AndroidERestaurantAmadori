@@ -15,7 +15,6 @@ import fr.isen.amadori.androiderestaurant.profile.ProfileActivity
 open class BaseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_base)
         invalidateOptionsMenu()
     }
 

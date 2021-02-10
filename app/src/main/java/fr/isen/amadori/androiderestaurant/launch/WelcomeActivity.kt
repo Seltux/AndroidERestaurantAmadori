@@ -1,15 +1,11 @@
 package fr.isen.amadori.androiderestaurant.launch
 
 import android.animation.Animator
-import android.animation.AnimatorInflater
 import android.animation.AnimatorListenerAdapter
-import android.animation.ObjectAnimator
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import fr.isen.amadori.androiderestaurant.HomeActivity
-import fr.isen.amadori.androiderestaurant.R
 import fr.isen.amadori.androiderestaurant.databinding.ActivityWelcomeBinding
 
 
@@ -21,7 +17,7 @@ class WelcomeActivity : AppCompatActivity() {
         binding = ActivityWelcomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.idBienvenu.apply {
+       binding.idBienvenu.apply {
             alpha = 0f
             animate().alpha(1f).setDuration(10000).setListener(object : AnimatorListenerAdapter() {
                 override fun onAnimationEnd(animation: Animator?) {

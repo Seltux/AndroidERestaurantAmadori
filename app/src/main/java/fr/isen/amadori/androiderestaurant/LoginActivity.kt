@@ -75,6 +75,7 @@ class LoginActivity : AppCompatActivity(), Validator.ValidationListener {
         }
     }
 
+
     private fun verifyLoginUser(){
         val url = "http://test.api.catering.bluecodegames.com/user/login"
         val jsonRequet = Volley.newRequestQueue(this)
@@ -92,9 +93,10 @@ class LoginActivity : AppCompatActivity(), Validator.ValidationListener {
                 this.getSharedPreferences(BaseActivity.PREF_SHARED, MODE_PRIVATE)?.edit()
                     ?.putInt(SignUpActivity.ID_USER, gson.data.id)
                     ?.apply()
+                this.getSharedPreferences(BaseActivity.PREF_SHARED, MODE_PRIVATE)?.edit()?.putString(SignUpActivity.NAME_USER,gson.data.firstname)?.apply()
                 Toast.makeText(
                     this,
-                    "Connexion réussis, bienvenue" + gson.data.firstname + " " + gson.data.lastname + ".",
+                    "Connexion réussis, bienvenue " + gson.data.firstname + " " + gson.data.lastname + ".",
                     Toast.LENGTH_LONG
                 ).show()
                 val intent = Intent(this, FinalOrderActivity::class.java)

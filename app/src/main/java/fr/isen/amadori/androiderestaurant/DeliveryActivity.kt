@@ -1,8 +1,8 @@
 package fr.isen.amadori.androiderestaurant
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import fr.isen.amadori.androiderestaurant.databinding.ActivityDeliveryBinding
 
 private lateinit var binding: ActivityDeliveryBinding

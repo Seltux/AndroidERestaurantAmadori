@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -57,9 +56,6 @@ class SignUpActivity : AppCompatActivity(), Validator.ValidationListener {
     )
     private lateinit var inputVerificationPassword: EditText
 
-    @Checked(message = "Plese check this box, you have to agree to continue.")
-    private lateinit var termsAndCondition: CheckBox
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -78,7 +74,6 @@ class SignUpActivity : AppCompatActivity(), Validator.ValidationListener {
         inputEmail = binding.idEmailSignUp
         inputPassword = binding.idPasswordSignUp
         inputVerificationPassword = binding.idVerificationPassword
-        termsAndCondition = binding.idAgreeTerms
         binding.idSubmitSignUp.setOnClickListener {
             validator!!.validate()
             sendForm()
@@ -132,6 +127,9 @@ class SignUpActivity : AppCompatActivity(), Validator.ValidationListener {
                     MODE_PRIVATE
                 )
                 sharedPref.edit().putInt(ID_USER, gson.data.id).apply()
+                sharedPref.edit().putString(NAME_USER, gson.data.firstname).apply()
+                val intent = Intent(this,HomeActivity::class.java)
+                startActivity(intent)
             },
             {
                 Log.e("error signu form", it.toString())
@@ -148,6 +146,7 @@ class SignUpActivity : AppCompatActivity(), Validator.ValidationListener {
 
     companion object {
         const val ID_USER = "id_user"
+        const val NAME_USER = "firstname"
     }
 }
 
