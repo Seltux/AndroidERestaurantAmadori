@@ -96,4 +96,5 @@
     <string name="title_activity_maps">Map</string>
     <string name="la_google_map_n_affiche_rien_tr_s_probalement_cause_de_la_version_android_ou_du_manque_d_un_module_sdk_si_c_est_le_cas_pour_vous_ne_vous_en_faites_pas_cliquez_su_le_boutton_ci_dessous">La google map n\'affiche rien très probalement à cause de la version Android ou du manque d\'un module SDK. Si c\'est le cas pour vous, ne vous en faites pas ! Cliquez su le boutton ci-dessous :)</string>
     <string name="restaurant">restaurant</string>
+    <string name="resto">resto</string>
 </resources>
