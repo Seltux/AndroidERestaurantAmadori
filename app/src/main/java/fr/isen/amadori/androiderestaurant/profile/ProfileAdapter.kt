@@ -43,7 +43,7 @@ class ProfileAdapter(
         }
         holder.recap.text = prettyDescription.toString()
         holder.date.text = history[position].date
-        holder.prixTotal.text = prix.toString()
+        holder.prixTotal.text = "$prix €"
         holder.totalQuantity.text = "x" + quan.toString()
     }
 
