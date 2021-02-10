@@ -43,14 +43,12 @@
         android:id="@+id/idPrixRepas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="140dp"
+        android:layout_marginStart="80dp"
         android:layout_marginTop="120dp"
-        android:layout_marginEnd="64dp"
         android:text="@string/prixrepas"
         android:textColor="@color/green_italie_2"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/idImageRepas"
         app:layout_constraintTop_toTopOf="parent" />
 
