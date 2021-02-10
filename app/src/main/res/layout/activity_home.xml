@@ -39,7 +39,7 @@
         android:id="@+id/idAdresseRestaurantHome"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="100dp"
         android:elevation="10dp"
         android:fontFamily="@font/italianno"
         android:text="@string/via_bonifacio_viii_14_00165_roma_rm_italie"
@@ -50,7 +50,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idPizzaImage" />
+        app:layout_constraintTop_toBottomOf="@+id/idMapRestaurant" />
 
     <ImageView
         android:id="@+id/idGuideMichelin"
@@ -125,7 +125,8 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="130dp"
         android:backgroundTint="#FFC107"
-        android:text="@string/le_restaurant"
+        android:elevation="10dp"
+        android:text="@string/restaurant"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/idButtonDesserts" />
